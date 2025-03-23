@@ -13,6 +13,7 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
     public bool isSprinting = false;
     public Action OnAttackPerformed;
     public Action OnDashPerformed;
+    public Action OnInteract2Performed;
 
     void OnEnable() {
         if (controls!=null) {
@@ -58,6 +59,11 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
         if (!context.performed) return; // Trigger only once per press
         OnInteractPerformed?.Invoke();
     }
+    void InputSystem.IPlayerActions.OnInteract2(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return; // Trigger only once per press
+        OnInteract2Performed?.Invoke();
+    }
     void InputSystem.IPlayerActions.OnCrouch(InputAction.CallbackContext context)
     {
         throw new System.NotImplementedException();
@@ -80,5 +86,24 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
     void InputSystem.IPlayerActions.OnCursorToggle(InputAction.CallbackContext context)
     {
         cursorIsLocked = !cursorIsLocked;
+    }
+
+    public void ResetInput()
+    {
+        controls?.Player.Disable();
+        controls = new InputSystem();
+        controls.Player.SetCallbacks(this);
+        controls.Player.Enable();
+    }
+
+    // Optional: Add these if you need more granular control
+    public void DisableInput()
+    {
+        controls?.Player.Disable();
+    }
+
+    public void EnableInput()
+    {
+        controls?.Player.Enable();
     }
 }

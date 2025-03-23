@@ -71,19 +71,25 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Cameras not assigned in GameManager!");
         }
 
+        if (ghostInput != null)
+        {
+            ghostInput.enabled = true;
+            ghostInput.OnInteractPerformed += HandleInteractPerformed;
+            ghostInput.OnInteract2Performed += HandleDepossession;
+        }
+
         _currentPossessedEntity = null;
     }
 
     private void Start()
     {
-        // Get and store the InputReader once
+        // Remove event subscriptions from Start since we're handling them elsewhere
         if (currentGhost != null)
         {
             ghostInput = currentGhost.GetComponent<InputReader>();
-            if (ghostInput != null)
+            if (ghostInput == null)
             {
-                // Subscribe to the event once
-                ghostInput.OnInteractPerformed += HandleInteractPerformed;
+                Debug.LogError("Ghost InputReader not found!");
             }
         }
     }
@@ -94,6 +100,7 @@ public class GameManager : MonoBehaviour
         if (ghostInput != null)
         {
             ghostInput.OnInteractPerformed -= HandleInteractPerformed;
+            ghostInput.OnInteract2Performed -= HandleDepossession;  // Add this line
         }
     }
 
@@ -102,6 +109,15 @@ public class GameManager : MonoBehaviour
         if (currentGhost != null && currentGhost.activeSelf)
         {
             TryPossessNearbyEnemy();
+        }
+    }
+
+    private void HandleDepossession()
+    {
+        if (_currentPossessedEntity != null)
+        {
+            Debug.Log("Depossessing current entity");
+            UnpossessCurrentEntity();
         }
     }
 
@@ -176,8 +192,16 @@ public class GameManager : MonoBehaviour
             // Setup input system
             if (inputReader != null)
             {
+                // Clean up old subscriptions
+                inputReader.OnInteract2Performed -= HandleDepossession;
+                
+                // Reset input system
+                inputReader.ResetInput();
+                
+                // Add new subscriptions and enable
+                inputReader.OnInteract2Performed += HandleDepossession;
                 inputReader.enabled = true;
-                Debug.Log("Enabled player controller and input");
+                Debug.Log("Reset and enabled possessed entity input system");
             }
             else
             {
@@ -199,57 +223,97 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        // Handle ghost
+        // Handle ghost cleanup
         if (currentGhost != null)
         {
-            currentGhost.SetActive(false);
-            ghostController.enabled = false;
+            // Clean up ghost input before disabling
             if (ghostInput != null)
             {
+                ghostInput.OnInteractPerformed -= HandleInteractPerformed;
+                ghostInput.OnInteract2Performed -= HandleDepossession;
                 ghostInput.enabled = false;
             }
-            Debug.Log("Disabled ghost");
+            
+            currentGhost.SetActive(false);
+            ghostController.enabled = false;
+            Debug.Log("Cleaned up and disabled ghost");
         }
 
-        Debug.Log($"Possession of {entity.name} complete");
+        Debug.Log($"Possession of {entity.name} complete with input reset");
     }
 
     public void UnpossessCurrentEntity()
     {
         if (_currentPossessedEntity != null)
         {
-            // Re-enable enemy controller and disable player controller
+            // Calculate spawn position with offset
+            Vector3 enemyForward = _currentPossessedEntity.transform.forward;
+            Vector3 spawnOffset = -enemyForward * 2f;
+            spawnOffset.y = 0.5f;
+            Vector3 spawnPosition = _currentPossessedEntity.transform.position + spawnOffset;
+
+            // First clean up possessed entity
             EnemyController enemyController = _currentPossessedEntity.GetComponent<EnemyController>();
             InputReader inputReader = _currentPossessedEntity.GetComponent<InputReader>();
+            NavMeshAgent enemyAgent = _currentPossessedEntity.GetComponent<NavMeshAgent>();
 
             if (enemyController != null)
             {
                 enemyController.isPossessed = false;
-                enemyController.enabled = true;  // Re-enable enemy AI
-                enemyController.GetComponent<NavMeshAgent>().enabled = true;  // Re-enable navigation
+                //enemyController.enabled = true;  // Re-enable enemy AI
+                if (enemyAgent != null)
+                {
+                    //enemyAgent.enabled = true;
+                }
             }
 
+            // Cleanup possessed entity components
             if (possessedController != null && inputReader != null)
             {
+                inputReader.OnInteract2Performed -= HandleDepossession;
+                inputReader.enabled = false;
                 possessedController.enabled = false;
                 possessedController.isPossessed = false;
-                inputReader.enabled = false;  // Disable input processing
             }
 
-            // Re-enable ghost
+            // Reset and re-initialize ghost
             if (currentGhost != null)
             {
-                currentGhost.transform.position = _currentPossessedEntity.transform.position + Vector3.up * 2f;
+                // Position and activate ghost
+                currentGhost.transform.position = spawnPosition;
                 currentGhost.SetActive(true);
-                ghostController.enabled = true;
 
-                var ghostInput = currentGhost.GetComponent<InputReader>();
+                // Reset input system
                 if (ghostInput != null)
                 {
+                    // Clean up old subscriptions
+                    ghostInput.OnInteractPerformed -= HandleInteractPerformed;
+                    ghostInput.OnInteract2Performed -= HandleDepossession;
+                    
+                    // Reset input system
+                    ghostInput.ResetInput();
+                    
+                    // Add new subscriptions
+                    ghostInput.OnInteractPerformed += HandleInteractPerformed;
+                    ghostInput.OnInteract2Performed += HandleDepossession;
                     ghostInput.enabled = true;
+                    Debug.Log("Reset ghost input system");
                 }
 
-                // Reset camera targets to ghost
+                // Re-enable ghost controller
+                ghostController.enabled = true;
+                
+                // Reset rigidbody
+                var ghostRigidbody = currentGhost.GetComponent<Rigidbody>();
+                if (ghostRigidbody != null)
+                {
+                    ghostRigidbody.linearVelocity = Vector3.zero;
+                    ghostRigidbody.angularVelocity = Vector3.zero;
+                    ghostRigidbody.Sleep(); // Reset physics state
+                    ghostRigidbody.WakeUp();
+                }
+
+                // Update camera
                 if (thirdPersonCinemachineCamera && isometricCinemachineCamera)
                 {
                     thirdPersonCinemachineCamera.Follow = currentGhost.transform;
@@ -259,6 +323,7 @@ public class GameManager : MonoBehaviour
 
             _currentPossessedEntity = null;
             possessedController = null;
+            Debug.Log("Depossession complete with input reset");
         }
     }
 
