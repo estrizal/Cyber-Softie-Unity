@@ -12,6 +12,10 @@ public class FixElectricity : MonoBehaviour, IInteractable
 
     public AudioSource ElectricityFixed;
 
+    public GameObject sparksPrefab;
+
+    public GameObject WindPrefab;
+
     public void Interact()
     {
         if (isFixed) return;
@@ -24,6 +28,18 @@ public class FixElectricity : MonoBehaviour, IInteractable
         OnElectricityFixed?.Invoke();
 
         ElectricityFixed.Play();
+
+
+        if (sparksPrefab != null)
+        {
+            sparksPrefab.SetActive(false);
+            
+        }
+
+        if (WindPrefab != null)
+        {
+            WindPrefab.SetActive(true);
+        }
 
         // Optional: Add sound or animation feedback here
     }

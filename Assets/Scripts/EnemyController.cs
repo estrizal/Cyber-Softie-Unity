@@ -30,16 +30,17 @@ public class EnemyController : MonoBehaviour
 
     private NavMeshAgent agent;
     private int currentPatrolIndex;
-    
+
     private bool isMoving = false;
     private bool isWaiting = false;
     private Animator animator;
-    
+
     [Header("Attack Settings")]
     public float attackRange = 2f;
     private bool attacking = false;
     public float attackCooldown = 0.9f;
-    public float attackDuration = 0.6f;  // Add this line - time for attack animation
+    public float attackDuration = 0.6f;
+    public float attackWindupTime = 0.3f;  // Add this line - time before attack starts
     public float animationFactor = 0.6f;
     private EnemyBecomesPlayerController enemyBecomesPlayerController;
     private GameManager gameManager;
@@ -48,14 +49,14 @@ public class EnemyController : MonoBehaviour
     public float sightRange = 15f;
     public float fieldOfViewAngle = 100f;
     public LayerMask obstacleLayer;
-    
+
     [Header("Coordination Settings")]
     public float minDistanceToJoinChase = 20f;
     public float chanceToJoinChase = 0.3f;
     public float decisionUpdateInterval = 0.5f;
     private float nextDecisionTime;
     private bool canSeePlayer;
-    
+
     private Vector3? lastKnownPlayerPosition;
 
     private Health health;
@@ -97,7 +98,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.Instance;
-    } 
+    }
 
     void Update()
     {
@@ -150,7 +151,7 @@ public class EnemyController : MonoBehaviour
     private void Patrol()
     {
         agent.speed = patrolSpeed;
-        
+
         if (!isWaiting && agent.destination != patrolPoints[currentPatrolIndex].position)
         {
             agent.destination = patrolPoints[currentPatrolIndex].position;
@@ -166,7 +167,7 @@ public class EnemyController : MonoBehaviour
     {
         isWaiting = true;
         agent.isStopped = true;
-        yield return new WaitForSeconds(Random.Range(waitTimeAfterPatrol, waitTimeAfterPatrol+1.5f));
+        yield return new WaitForSeconds(Random.Range(waitTimeAfterPatrol, waitTimeAfterPatrol + 1.5f));
         agent.isStopped = false;
         isWaiting = false;
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
@@ -175,7 +176,7 @@ public class EnemyController : MonoBehaviour
     private void ChasePlayer()
     {
         // Early exit if agent is not valid or in cooldown
-        if (!agent || !agent.enabled || !agent.isOnNavMesh || isInCooldown) 
+        if (!agent || !agent.enabled || !agent.isOnNavMesh || isInCooldown)
         {
             return;
         }
@@ -231,10 +232,10 @@ public class EnemyController : MonoBehaviour
     {
         // Disable agent temporarily
         agent.enabled = false;
-        
+
         // Wait a frame
         yield return null;
-        
+
         // Try to find valid position on NavMesh
         NavMeshHit hit;
         if (NavMesh.SamplePosition(transform.position, out hit, 5f, NavMesh.AllAreas))
@@ -264,7 +265,7 @@ public class EnemyController : MonoBehaviour
             Vector3 perpendicular = Vector3.Cross(directionToPlayer, Vector3.up);
             float randomOffset = Mathf.PerlinNoise(Time.time * 0.5f, gameObject.GetInstanceID() * 0.5f) * 2 - 1;
             Vector3 flankPosition = playerTransform.position + (perpendicular * attackRange * 1.5f * randomOffset);
-            
+
             // Validate position on NavMesh
             NavMeshHit hit;
             if (NavMesh.SamplePosition(flankPosition, out hit, attackRange * 1.5f, NavMesh.AllAreas))
@@ -373,21 +374,40 @@ public class EnemyController : MonoBehaviour
     private IEnumerator StartAttack()
     {
         if (!agent.enabled || !agent.isOnNavMesh) yield break;
-        
+
         attacking = true;
-        
-        // Stop movement for attack
+
+        // Stop movement and face player during windup
+        agent.isStopped = true;
+        agent.velocity = Vector3.zero;
+
+        // Face player during windup
+        if (playerTransform != null)
+        {
+            Vector3 directionToPlayer = playerTransform.position - transform.position;
+            directionToPlayer.y = 0;
+            transform.rotation = Quaternion.LookRotation(directionToPlayer);
+        }
+
+        // Play windup animation or idle
+        animator.Play("idle");
+
+        // Wait for windup
+        yield return new WaitForSeconds(attackWindupTime);
+
+        // Perform attack
         KatanaSlash katanaSlash = GetComponentInChildren<KatanaSlash>();
         if (katanaSlash != null)
         {
+            animator.Play("attack1");
             katanaSlash.ActivateSlash();
         }
-        
+
         // Wait for attack animation to complete
         yield return new WaitForSeconds(attackDuration);
-        
+
         attacking = false;
-        
+
         // Start cooldown state
         StartCoroutine(HandleAttackCooldown());
     }
@@ -397,9 +417,9 @@ public class EnemyController : MonoBehaviour
         isInCooldown = true;
         agent.isStopped = true;
         agent.velocity = Vector3.zero;
-        
+
         yield return new WaitForSeconds(attackCooldown);
-        
+
         if (agent != null && agent.enabled && agent.isOnNavMesh)
         {
             isInCooldown = false;
@@ -414,7 +434,7 @@ public class EnemyController : MonoBehaviour
             agent.isStopped = true;
             agent.enabled = false;
         }
-        
+
         if (enemyBecomesPlayerController != null)
         {
             enemyBecomesPlayerController.enabled = true;
@@ -433,7 +453,7 @@ public class EnemyController : MonoBehaviour
         float angle = Vector3.Angle(transform.forward, directionToPlayer);
         if (angle > fieldOfViewAngle * 0.5f)
         {
-            if (distanceToPlayer <= sightRange * 0.3f) 
+            if (distanceToPlayer <= sightRange * 0.3f)
             {
                 return true;
             }
@@ -456,7 +476,7 @@ public class EnemyController : MonoBehaviour
         {
             currentState = EnemyState.Aggressive;
             lastKnownPlayerPosition = playerTransform.position;
-            
+
             AlertNearbyEnemies();
             return;
         }
@@ -490,14 +510,14 @@ public class EnemyController : MonoBehaviour
     {
         // Stop all coroutines to prevent lingering NavMesh calls
         StopAllCoroutines();
-        
+
         // Disable agent before animations
         if (agent != null && agent.enabled)
         {
             agent.isStopped = true;
             agent.enabled = false;
         }
-        
+
         enabled = false;
         animator.Play("Death");
     }
@@ -505,7 +525,7 @@ public class EnemyController : MonoBehaviour
     private void HandleDamaged()
     {
         animator.Play("Hit");
-        
+
         if (agent != null)
         {
             StartCoroutine(HandleKnockback());
@@ -521,7 +541,7 @@ public class EnemyController : MonoBehaviour
         if (GameManager.Instance != null)
         {
             Transform attackerTransform = null;
-            
+
             // Check if there's a possessed entity attacking
             GameObject possessedEntity = GameManager.Instance.GetCurrentPossessedEntity();
             if (possessedEntity != null && possessedEntity != gameObject)
@@ -565,7 +585,7 @@ public class EnemyController : MonoBehaviour
                 if (NavMesh.SamplePosition(transform.position, out hit, 1.0f, NavMesh.AllAreas))
                 {
                     transform.position = hit.position;
-                    
+
                     // Only re-enable agent if it was enabled before
                     if (wasAgentEnabled && agent != null)
                     {
@@ -585,10 +605,10 @@ public class EnemyController : MonoBehaviour
         // Update movement state based on agent velocity
         isMoving = agent.velocity.magnitude > 0.2f;
         animator.SetBool("isMoving", isMoving);
-        
+
         if (isMoving)
         {
-            animator.SetFloat("Speed", agent.velocity.magnitude/chaseSpeed * animationFactor);
+            animator.SetFloat("Speed", agent.velocity.magnitude / chaseSpeed * animationFactor);
         }
         else
         {
