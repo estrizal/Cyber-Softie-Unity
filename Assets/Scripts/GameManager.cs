@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour
         {
             possessedController.enabled = true;
             possessedController.isPossessed = true;
+            possessedController.gameIsInThirdPerson = !isIsometricMode; // Set initial camera mode
 
             // Setup input system
             if (inputReader != null)
@@ -288,8 +289,50 @@ public class GameManager : MonoBehaviour
                 isometricCinemachineCamera.Follow = targetToFollow;
             }
 
+            // Update the perspective mode in the current possessed entity
+            if (_currentPossessedEntity != null)
+            {
+                var playerController = _currentPossessedEntity.GetComponent<EnemyBecomesPlayerController>();
+                if (playerController != null)
+                {
+                    playerController.gameIsInThirdPerson = false;
+                }
+            }
+
             isIsometricMode = true;
             Debug.Log("Switched to isometric camera");
+        }
+    }
+
+    public void SwitchToThirdPersonCamera()
+    {
+        if (isIsometricMode && thirdPersonCinemachineCamera && isometricCinemachineCamera)
+        {
+            isometricCinemachineCamera.gameObject.SetActive(false);
+            thirdPersonCinemachineCamera.gameObject.SetActive(true);
+
+            // Update the follow target based on current state
+            Transform targetToFollow = currentGhost != null && currentGhost.activeSelf ?
+                currentGhost.transform :
+                _currentPossessedEntity?.transform;
+
+            if (targetToFollow != null)
+            {
+                thirdPersonCinemachineCamera.Follow = targetToFollow;
+            }
+
+            // Update the perspective mode in the current possessed entity
+            if (_currentPossessedEntity != null)
+            {
+                var playerController = _currentPossessedEntity.GetComponent<EnemyBecomesPlayerController>();
+                if (playerController != null)
+                {
+                    playerController.gameIsInThirdPerson = true;
+                }
+            }
+
+            isIsometricMode = false;
+            Debug.Log("Switched to third person camera");
         }
     }
 

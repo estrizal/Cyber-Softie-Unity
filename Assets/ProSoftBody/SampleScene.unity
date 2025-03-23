@@ -4182,8 +4182,8 @@ MonoBehaviour:
   attackRange: 0.5
   attackCooldown: 1.5
   attackDuration: 0.6
-  attackWindupTime: 0.3
   animationFactor: 0.8
+  attackWindupTime: 0.4
   sightRange: 15
   fieldOfViewAngle: 90
   obstacleLayer:
