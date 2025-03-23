@@ -1646,6 +1646,33 @@ MonoBehaviour:
   minIntensity: 0
   maxIntensity: 0.31
   flickerSpeed: 0.2
+--- !u!1 &285567143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5569043992460113364, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+  m_PrefabInstance: {fileID: 660848083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &285567147
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285567143}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 665085963770613444, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
 --- !u!1 &304164866 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7905414190033819348, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
@@ -2765,6 +2792,27 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2454634519608151991, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+--- !u!65 &656866487
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656866482}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 115.3231, y: 21.752329, z: 12.242408}
+  m_Center: {x: -41.832355, y: 1.0977482, z: -115.977196}
 --- !u!1 &657633379 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6512510688612296998, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
@@ -3401,9 +3449,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7045030354117346258, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1165534156}
+    - targetCorrespondingSourceObject: {fileID: -5569043992460113364, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 285567147}
+    - targetCorrespondingSourceObject: {fileID: 585220623989814957, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1074506260}
     - targetCorrespondingSourceObject: {fileID: -9041267756353341082, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 656866486}
+    - targetCorrespondingSourceObject: {fileID: -9041267756353341082, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 656866487}
     - targetCorrespondingSourceObject: {fileID: -851114287730531682, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1787572969}
@@ -3461,6 +3518,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7046613062614526147, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1783703820}
+    - targetCorrespondingSourceObject: {fileID: -7046613062614526147, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1783703824}
     - targetCorrespondingSourceObject: {fileID: -6905814750028262824, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1985339930}
@@ -4443,7 +4503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421b393eb98155642b749be0504a2a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionMessage: Project's Supervising Super Computer (PSSC)
+  interactionMessage: Project's Supervising Super Computer (PSSC) \n it's broken
+    and useless.
   text_interaction_sound: {fileID: 0}
 --- !u!114 &910650723
 MonoBehaviour:
@@ -5046,6 +5107,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionMessage: Experimental Consiousness Transfer Chamber #2
   text_interaction_sound: {fileID: 0}
+--- !u!1 &1074506256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 585220623989814957, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+  m_PrefabInstance: {fileID: 660848083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1074506260
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074506256}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2352272465676470988, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
 --- !u!1 &1097915229 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1599826595754709761, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
@@ -7325,6 +7413,33 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3363493904352407131, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+--- !u!54 &1783703824
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783703816}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1787572965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -851114287730531682, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
@@ -8156,7 +8271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421b393eb98155642b749be0504a2a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionMessage: Super Computer's Power Unit
+  interactionMessage: 'Super Computer''s Power Unit. \n not useful now. '
   text_interaction_sound: {fileID: 0}
 --- !u!1 &1984699493 stripped
 GameObject:
