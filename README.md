@@ -1,6 +1,8 @@
 # **Cyber Softie (In Development)**  
 **Made by:** *GoonShifters from Delhi Technological University*
 
+The game features a possession mechanic similar to that of the OG Pac-Man 
+
 ## **Controls**
 
 **Keyboard & Mouse:**
