@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections; // Needed for coroutines
 
 public class FixElectricity : MonoBehaviour, IInteractable
 {
@@ -27,45 +28,49 @@ public class FixElectricity : MonoBehaviour, IInteractable
 
         Debug.Log("Electricity has been fixed!");
 
-        // Trigger the event to notify all subscribed systems
-        
+        // Start the sequence with wait times
+        StartCoroutine(FixElectricitySequence());
+    }
 
-        
-
-
-
+    private IEnumerator FixElectricitySequence()
+    {
+        // Step 1: Activate Cutscene 1
         cutscene1.SetActive(true);
+        Debug.Log("Cutscene 1 activated.");
 
-        [Add some wait time here for 1.5 seconds. ]
+        yield return new WaitForSeconds(3f); // Wait for 1.5 seconds
 
+        // Step 2: Disable sparks and play electricity fixed sound
         if (sparksPrefab != null)
         {
             ElectricityFixed.Play();
             sparksPrefab.SetActive(false);
-                OnElectricityFixed?.Invoke();
+            Debug.Log("Sparks disabled and electricity fixed sound played.");
 
-                [Add some wait time here for 1.5 seconds]
+            OnElectricityFixed?.Invoke();
 
-
-            
+            yield return new WaitForSeconds(1.5f); // Wait for 1.5 seconds
         }
 
-        
+        // Step 3: Activate Cutscene 2 and deactivate Cutscene 1
         cutscene2.SetActive(true);
         cutscene1.SetActive(false);
+        Debug.Log("Cutscene 2 activated and Cutscene 1 deactivated.");
 
-        [Add wait time here for 1.5 seconds]
+        yield return new WaitForSeconds(1.5f); // Wait for 1.5 seconds
 
+        // Step 4: Activate WindPrefab and play electricity fixed sound again
         if (WindPrefab != null)
         {
             WindPrefab.SetActive(true);
             ElectricityFixed.Play();
+            Debug.Log("Wind activated and electricity fixed sound played again.");
 
-                [Add wait time here for 1.5 seconds]
+            yield return new WaitForSeconds(1.5f); // Wait for 1.5 seconds
 
-            
+            cutscene2.SetActive(false);
         }
 
-        // Optional: Add sound or animation feedback here
+        Debug.Log("Electricity fixing sequence completed.");
     }
 }

@@ -3542,8 +3542,8 @@ MonoBehaviour:
   ElectricityFixed: {fileID: 733735618}
   sparksPrefab: {fileID: 911657977}
   WindPrefab: {fileID: 1522004641}
-  cutscene1: {fileID: 0}
-  cutscene2: {fileID: 0}
+  cutscene1: {fileID: 261218329}
+  cutscene2: {fileID: 1616458430}
 --- !u!65 &660848086
 BoxCollider:
   m_ObjectHideFlags: 0
