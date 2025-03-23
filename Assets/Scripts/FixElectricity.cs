@@ -16,6 +16,9 @@ public class FixElectricity : MonoBehaviour, IInteractable
 
     public GameObject WindPrefab;
 
+    public GameObject cutscene1;
+    public GameObject cutscene2;
+
     public void Interact()
     {
         if (isFixed) return;
@@ -25,20 +28,42 @@ public class FixElectricity : MonoBehaviour, IInteractable
         Debug.Log("Electricity has been fixed!");
 
         // Trigger the event to notify all subscribed systems
-        OnElectricityFixed?.Invoke();
+        
 
-        ElectricityFixed.Play();
+        
 
+
+
+        cutscene1.SetActive(true);
+
+        [Add some wait time here for 1.5 seconds. ]
 
         if (sparksPrefab != null)
         {
+            ElectricityFixed.Play();
             sparksPrefab.SetActive(false);
+                OnElectricityFixed?.Invoke();
+
+                [Add some wait time here for 1.5 seconds]
+
+
             
         }
+
+        
+        cutscene2.SetActive(true);
+        cutscene1.SetActive(false);
+
+        [Add wait time here for 1.5 seconds]
 
         if (WindPrefab != null)
         {
             WindPrefab.SetActive(true);
+            ElectricityFixed.Play();
+
+                [Add wait time here for 1.5 seconds]
+
+            
         }
 
         // Optional: Add sound or animation feedback here
