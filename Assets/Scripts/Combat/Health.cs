@@ -14,7 +14,6 @@ public class Health : MonoBehaviour
     public float hitStopDuration = 0.1f;
     
     [Header("Visual Feedback")]
-    public GameObject slashEffectPrefab;
     public Material hitFlashMaterial;
     public float hitFlashDuration = 0.1f;
     private Material[] originalMaterials;
@@ -57,6 +56,7 @@ public class Health : MonoBehaviour
         float knockbackMultiplier = GetComponent<EnemyBecomesPlayerController>() != null 
             ? playerReceivedKnockback 
             : playerDealtKnockback;
+        
 
         StartCoroutine(HitResponse(hitPoint, hitDirection, knockbackMultiplier));
 
@@ -72,13 +72,6 @@ public class Health : MonoBehaviour
         if (rb != null)
         {
             rb.AddForce(hitDirection * baseKnockbackForce * knockbackMultiplier, ForceMode.Impulse);
-        }
-
-        // Spawn slash effect
-        if (slashEffectPrefab != null)
-        {
-            Quaternion hitRotation = Quaternion.LookRotation(hitDirection);
-            Instantiate(slashEffectPrefab, hitPoint, hitRotation);
         }
 
         // Hit stop and material flash

@@ -96,7 +96,7 @@ public class KatanaSlash : MonoBehaviour
         if (slashEffectPool.Count == 0) return;
 
         GameObject slashEffect = slashEffectPool.Dequeue();
-        slashEffect.transform.position = transform.position;
+        slashEffect.transform.position = transform.position + new Vector3(0, 0.7f, 0);
         slashEffect.transform.rotation = transform.rotation;
         slashEffect.SetActive(true);
 

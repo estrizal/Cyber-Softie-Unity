@@ -1,0 +1,633 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UpperBodyAvatarMask
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Chest_1.001
+    m_Weight: 1
+  - m_Path: root
+    m_Weight: 1
+  - m_Path: root/def-bfoot.L
+    m_Weight: 0
+  - m_Path: root/def-bfoot.L/def-bfoot.L_end
+    m_Weight: 0
+  - m_Path: root/def-bfoot.R
+    m_Weight: 0
+  - m_Path: root/def-bfoot.R/def-bfoot.R_end
+    m_Weight: 0
+  - m_Path: root/def-chest
+    m_Weight: 1
+  - m_Path: root/def-chest/def-chest_end
+    m_Weight: 1
+  - m_Path: root/def-ffoot.L
+    m_Weight: 0
+  - m_Path: root/def-ffoot.L/def-ffoot.L_end
+    m_Weight: 0
+  - m_Path: root/def-ffoot.R
+    m_Weight: 0
+  - m_Path: root/def-ffoot.R/def-ffoot.R_end
+    m_Weight: 0
+  - m_Path: root/def-hips
+    m_Weight: 0
+  - m_Path: root/def-hips/def-hips_end
+    m_Weight: 1
+  - m_Path: root/def-index1.L
+    m_Weight: 1
+  - m_Path: root/def-index1.L/def-index1.L_end
+    m_Weight: 1
+  - m_Path: root/def-index1.R
+    m_Weight: 1
+  - m_Path: root/def-index1.R/def-index1.R_end
+    m_Weight: 1
+  - m_Path: root/def-index2.L
+    m_Weight: 1
+  - m_Path: root/def-index2.L/def-index2.L_end
+    m_Weight: 1
+  - m_Path: root/def-index2.R
+    m_Weight: 1
+  - m_Path: root/def-index2.R/def-index2.R_end
+    m_Weight: 1
+  - m_Path: root/def-leg.L
+    m_Weight: 0
+  - m_Path: root/def-leg.L/def-leg.L_end
+    m_Weight: 0
+  - m_Path: root/def-leg.R
+    m_Weight: 0
+  - m_Path: root/def-leg.R/def-leg.R_end
+    m_Weight: 0
+  - m_Path: root/def-middle1.L
+    m_Weight: 1
+  - m_Path: root/def-middle1.L/def-middle1.L_end
+    m_Weight: 1
+  - m_Path: root/def-middle1.R
+    m_Weight: 1
+  - m_Path: root/def-middle1.R/def-middle1.R_end
+    m_Weight: 1
+  - m_Path: root/def-middle2.L
+    m_Weight: 1
+  - m_Path: root/def-middle2.L/def-middle2.L_end
+    m_Weight: 1
+  - m_Path: root/def-middle2.R
+    m_Weight: 1
+  - m_Path: root/def-middle2.R/def-middle2.R_end
+    m_Weight: 1
+  - m_Path: root/def-neck
+    m_Weight: 1
+  - m_Path: root/def-neck/def-neck_end
+    m_Weight: 1
+  - m_Path: root/def-palm.L
+    m_Weight: 1
+  - m_Path: root/def-palm.L/def-palm.L_end
+    m_Weight: 1
+  - m_Path: root/def-palm.R
+    m_Weight: 1
+  - m_Path: root/def-palm.R/def-palm.R_end
+    m_Weight: 1
+  - m_Path: root/def-pinky1.L
+    m_Weight: 1
+  - m_Path: root/def-pinky1.L/def-pinky1.L_end
+    m_Weight: 1
+  - m_Path: root/def-pinky1.R
+    m_Weight: 1
+  - m_Path: root/def-pinky1.R/def-pinky1.R_end
+    m_Weight: 1
+  - m_Path: root/def-pinky2.L
+    m_Weight: 1
+  - m_Path: root/def-pinky2.L/def-pinky2.L_end
+    m_Weight: 1
+  - m_Path: root/def-pinky2.R
+    m_Weight: 1
+  - m_Path: root/def-pinky2.R/def-pinky2.R_end
+    m_Weight: 1
+  - m_Path: root/def-ring1.L
+    m_Weight: 1
+  - m_Path: root/def-ring1.L/def-ring1.L_end
+    m_Weight: 1
+  - m_Path: root/def-ring1.R
+    m_Weight: 1
+  - m_Path: root/def-ring1.R/def-ring1.R_end
+    m_Weight: 1
+  - m_Path: root/def-ring2.L
+    m_Weight: 1
+  - m_Path: root/def-ring2.L/def-ring2.L_end
+    m_Weight: 1
+  - m_Path: root/def-ring2.R
+    m_Weight: 1
+  - m_Path: root/def-ring2.R/def-ring2.R_end
+    m_Weight: 1
+  - m_Path: root/def-shin.L
+    m_Weight: 0
+  - m_Path: root/def-shin.L/def-shin.L_end
+    m_Weight: 0
+  - m_Path: root/def-shin.R
+    m_Weight: 0
+  - m_Path: root/def-shin.R/def-shin.R_end
+    m_Weight: 0
+  - m_Path: root/def-sholder.L
+    m_Weight: 1
+  - m_Path: root/def-sholder.L/def-sholder.L_end
+    m_Weight: 1
+  - m_Path: root/def-sholder.R
+    m_Weight: 1
+  - m_Path: root/def-sholder.R/def-sholder.R_end
+    m_Weight: 1
+  - m_Path: root/def-spine
+    m_Weight: 1
+  - m_Path: root/def-spine/def-spine_end
+    m_Weight: 1
+  - m_Path: root/def-thumb1.L
+    m_Weight: 1
+  - m_Path: root/def-thumb1.L/def-thumb1.L_end
+    m_Weight: 1
+  - m_Path: root/def-thumb1.R
+    m_Weight: 1
+  - m_Path: root/def-thumb1.R/def-thumb1.R_end
+    m_Weight: 1
+  - m_Path: root/def-thumb2.L
+    m_Weight: 1
+  - m_Path: root/def-thumb2.L/def-thumb2.L_end
+    m_Weight: 1
+  - m_Path: root/def-thumb2.R
+    m_Weight: 1
+  - m_Path: root/def-thumb2.R/def-thumb2.R_end
+    m_Weight: 1
+  - m_Path: root/def-wrist.L
+    m_Weight: 1
+  - m_Path: root/def-wrist.L/def-wrist.L_end
+    m_Weight: 1
+  - m_Path: root/def-wrist.R
+    m_Weight: 1
+  - m_Path: root/def-wrist.R/def-wrist.R_end
+    m_Weight: 1
+  - m_Path: root/root
+    m_Weight: 1
+  - m_Path: root/root/ctrl-footgy.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/ctrl-foot-roll.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/ctrl-foot-roll.L/ctrl-foot-roll.L_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/ctrl-pole-leg.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/ctrl-pole-leg.L/ctrl-pole-leg.L_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/mec-leg-ik.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/mec-leg-ik.L/tgt-ffootl.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/mec-leg-ik.L/tgt-ffootl.L/tgt-ftoel.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/mec-leg-ik.L/tgt-ffootl.L/tgt-ftoel.L/tgt-ftoel.L_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/mec-leg-ik.L/tgt-ffootl.L/tgt-ftoer.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/mec-leg-ik.L/tgt-ffootl.L/tgt-ftoer.L/tgt-ftoer.L_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/tgt-bfootl.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/tgt-bfootl.L/tgt-btiel.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/tgt-bfootl.L/tgt-btiel.L/tgt-btiel.L_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/tgt-bfootl.L/tgt-btoer.L
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.L/mch-foot-roll01.L/mch-foot-roll.L/mec-ffoot.L/tgt-bfootl.L/tgt-btoer.L/tgt-btoer.L_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/ctrl-foot-roll.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/ctrl-foot-roll.R/ctrl-foot-roll.R_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/ctrl-pole-leg.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/ctrl-pole-leg.R/ctrl-pole-leg.R_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/mec-ffoot.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/mec-ffoot.R/mec-leg-ik.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/mec-ffoot.R/mec-leg-ik.R/tgt-ffootl.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/mec-ffoot.R/mec-leg-ik.R/tgt-ffootl.R/tgt-ffootl.R_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/mec-ffoot.R/tgt-bfootl.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/mec-ffoot.R/tgt-bfootl.R/tgt-btiel.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/mec-ffoot.R/tgt-bfootl.R/tgt-btiel.R/tgt-btiel.R_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/mec-ffoot.R/tgt-bfootl.R/tgt-btoer.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/mec-ffoot.R/tgt-bfootl.R/tgt-btoer.R/tgt-btoer.R_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/tgt-ftoel.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/tgt-ftoel.R/tgt-ftoel.R_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/tgt-ftoer.R
+    m_Weight: 0
+  - m_Path: root/root/ctrl-footgy.R/mch-foot-roll01.R/mch-foot-roll.R/tgt-ftoer.R/tgt-ftoer.R_end
+    m_Weight: 0
+  - m_Path: root/root/ctrl-torso
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-chest
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-chest/ctrl-chest_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/ctrlleg.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/ctrlleg.L/ctrl-shin.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/ctrlleg.L/ctrl-shin.L/ctrl-shin.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/ctrlleg.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/ctrlleg.R/ctrl-shin.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/ctrlleg.R/ctrl-shin.R/ctrl-shin.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/tgt-leg.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/tgt-leg.L/tgt-shin.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/tgt-leg.L/tgt-shin.L/tgt-shin.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/tgt-leg.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/tgt-leg.R/tgt-shin.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-hips/tgt-hips/tgt-leg.R/tgt-shin.R/tgt-shin.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/mch-neck-rot
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/mch-neck-rot/mch-neck-rot_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/mch-armfollow.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/mch-armfollow.L/mch-armfollow.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/mec-ik-arm.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/mec-ik-arm.L/mec-ik-wrist.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/mec-ik-arm.L/mec-ik-wrist.L/mec-ik-wrist.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-index.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-index.L/ctrl-index-rot.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-index.L/ctrl-index-rot.L/ctrl-index-rot.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-middle.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-middle.L/ctrl-middle-rot.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-middle.L/ctrl-middle-rot.L/ctrl-middle-rot.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-pinky.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-pinky.L/ctrl-pinky-rot.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-pinky.L/ctrl-pinky-rot.L/ctrl-pinky-rot.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-ring.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-ring.L/ctrl-ring-rot.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-ring.L/ctrl-ring-rot.L/ctrl-ring-rot.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-thumb.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-thumb.L/ctrl-thumb-rot.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-thumb.L/ctrl-thumb-rot.L/ctrl-thumb-rot.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-thumb.L/mec-sword-L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/ctrl-thumb.L/mec-sword-L/mec-sword-L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-index1.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-index1.L/tgt-index2.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-index1.L/tgt-index2.L/tgt-index3.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-index1.L/tgt-index2.L/tgt-index3.L/tgt-index3.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-middle1.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-middle1.L/tgt-middle2.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-middle1.L/tgt-middle2.L/tgt-middle3.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-middle1.L/tgt-middle2.L/tgt-middle3.L/tgt-middle3.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-pinky1.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-pinky1.L/tgt-pinky2.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-pinky1.L/tgt-pinky2.L/tgt-pinky3.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-pinky1.L/tgt-pinky2.L/tgt-pinky3.L/tgt-pinky3.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-ring1.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-ring1.L/tgt-ring2.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-ring1.L/tgt-ring2.L/tgt-ring3.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-ring1.L/tgt-ring2.L/tgt-ring3.L/tgt-ring3.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-thumb1.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-thumb1.L/tgt-thumb2.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-thumb1.L/tgt-thumb2.L/tgt-thumb3.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.L/tgt-arm.L/tgt-wrist.L/tgt-palm.L/tgt-thumb1.L/tgt-thumb2.L/tgt-thumb3.L/tgt-thumb3.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/mch-armfollow.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/mch-armfollow.R/mch-armfollow.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/mec-ik-arm.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/mec-ik-arm.R/mec-ik-wrist.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/mec-ik-arm.R/mec-ik-wrist.R/mec-ik-wrist.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-index.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-index.R/ctrl-index-rot.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-index.R/ctrl-index-rot.R/ctrl-index-rot.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-middle.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-middle.R/ctrl-middle-rot.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-middle.R/ctrl-middle-rot.R/ctrl-middle-rot.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-pinky.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-pinky.R/ctrl-pinky-rot.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-pinky.R/ctrl-pinky-rot.R/ctrl-pinky-rot.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-ring.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-ring.R/ctrl-ring-rot.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-ring.R/ctrl-ring-rot.R/ctrl-ring-rot.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-thumb.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-thumb.R/ctrl-thumb-rot.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/ctrl-thumb.R/ctrl-thumb-rot.R/ctrl-thumb-rot.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-index1.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-index1.R/tgt-index2.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-index1.R/tgt-index2.R/tgt-index3.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-index1.R/tgt-index2.R/tgt-index3.R/tgt-index3.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-middle1.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-middle1.R/tgt-middle2.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-middle1.R/tgt-middle2.R/tgt-middle3.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-middle1.R/tgt-middle2.R/tgt-middle3.R/tgt-middle3.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-pinky1.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-pinky1.R/tgt-pinky2.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-pinky1.R/tgt-pinky2.R/tgt-pinky3.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-pinky1.R/tgt-pinky2.R/tgt-pinky3.R/tgt-pinky3.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-ring1.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-ring1.R/tgt-ring2.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-ring1.R/tgt-ring2.R/tgt-ring3.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-ring1.R/tgt-ring2.R/tgt-ring3.R/tgt-ring3.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-thumb1.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-thumb1.R/tgt-thumb2.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-thumb1.R/tgt-thumb2.R/tgt-thumb3.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/ctrl-tweak-spine/ctrl-tweakchest/tgt-sholder.R/tgt-arm.R/tgt-wrist.R/tgt-palm.R/tgt-thumb1.R/tgt-thumb2.R/tgt-thumb3.R/tgt-thumb3.R_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-head-rot
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-head-rot/mch-int-head-rot_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-neck-rot
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-neck-rot/tgt-neck
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-neck-rot/tgt-neck/mch-head-rot
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-neck-rot/tgt-neck/mch-head-rot/mch-head-rot_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-neck-rot/tgt-neck/tgt-head
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-neck-rot/tgt-neck/tgt-head/ctrl-hat
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-neck-rot/tgt-neck/tgt-head/ctrl-hat/ctrl-hat_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-neck-rot/tgt-neck/tgt-head/tgt-hat
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mch-int-neck-rot/tgt-neck/tgt-head/tgt-hat/tgt-hat_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.L/ctrl-fk-arm.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.L/ctrl-fk-arm.L/ctrl-wrist.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.L/ctrl-fk-arm.L/ctrl-wrist.L/ctrl-palm.L
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.L/ctrl-fk-arm.L/ctrl-wrist.L/ctrl-palm.L/ctrl-palm.L_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.L/ctrl-fk-arm.L/ctrl-wrist.L/ctrl-shield
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.L/ctrl-fk-arm.L/ctrl-wrist.L/ctrl-shield/ctrl-shield_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.L/ctrl-fk-arm.L/ctrl-wrist.L/ctrl-shield-int
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.L/ctrl-fk-arm.L/ctrl-wrist.L/ctrl-shield-int/ctrl-shield-int_end
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.R/ctrl-fk-arm.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.R/ctrl-fk-arm.R/ctrl-wrist.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.R/ctrl-fk-arm.R/ctrl-wrist.R/ctrl-palm.R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.R/ctrl-fk-arm.R/ctrl-wrist.R/ctrl-palm.R/mec-sword-R
+    m_Weight: 1
+  - m_Path: root/root/ctrl-torso/mec-fk-int-arm.R/ctrl-fk-arm.R/ctrl-wrist.R/ctrl-palm.R/mec-sword-R/mec-sword-R_end
+    m_Weight: 1
+  - m_Path: root/root/def-arm.L
+    m_Weight: 1
+  - m_Path: root/root/def-arm.L/def-arm.L_end
+    m_Weight: 1
+  - m_Path: root/root/def-arm.R
+    m_Weight: 1
+  - m_Path: root/root/def-arm.R/def-arm.R_end
+    m_Weight: 1
+  - m_Path: root/root/def-btoel.L
+    m_Weight: 0
+  - m_Path: root/root/def-btoel.L/def-btoel.L_end
+    m_Weight: 0
+  - m_Path: root/root/def-btoel.R
+    m_Weight: 0
+  - m_Path: root/root/def-btoel.R/def-btoel.R_end
+    m_Weight: 0
+  - m_Path: root/root/def-btoer.L
+    m_Weight: 0
+  - m_Path: root/root/def-btoer.L/def-btoer.L_end
+    m_Weight: 0
+  - m_Path: root/root/def-btoer.R
+    m_Weight: 0
+  - m_Path: root/root/def-btoer.R/def-btoer.R_end
+    m_Weight: 0
+  - m_Path: root/root/def-ftoel.L
+    m_Weight: 0
+  - m_Path: root/root/def-ftoel.L/def-ftoel.L_end
+    m_Weight: 0
+  - m_Path: root/root/def-ftoel.R
+    m_Weight: 0
+  - m_Path: root/root/def-ftoel.R/def-ftoel.R_end
+    m_Weight: 0
+  - m_Path: root/root/def-ftoer.L
+    m_Weight: 0
+  - m_Path: root/root/def-ftoer.L/def-ftoer.L_end
+    m_Weight: 0
+  - m_Path: root/root/def-ftoer.R
+    m_Weight: 0
+  - m_Path: root/root/def-ftoer.R/def-ftoer.R_end
+    m_Weight: 0
+  - m_Path: root/root/def-head
+    m_Weight: 1
+  - m_Path: root/root/def-head/def-head_end
+    m_Weight: 1
+  - m_Path: root/root/def-index3.L
+    m_Weight: 1
+  - m_Path: root/root/def-index3.L/def-index3.L_end
+    m_Weight: 1
+  - m_Path: root/root/def-index3.R
+    m_Weight: 1
+  - m_Path: root/root/def-index3.R/def-index3.R_end
+    m_Weight: 1
+  - m_Path: root/root/def-middle3.L
+    m_Weight: 1
+  - m_Path: root/root/def-middle3.L/def-middle3.L_end
+    m_Weight: 1
+  - m_Path: root/root/def-middle3.R
+    m_Weight: 1
+  - m_Path: root/root/def-middle3.R/def-middle3.R_end
+    m_Weight: 1
+  - m_Path: root/root/def-pinky3.L
+    m_Weight: 1
+  - m_Path: root/root/def-pinky3.L/def-pinky3.L_end
+    m_Weight: 1
+  - m_Path: root/root/def-pinky3.R
+    m_Weight: 1
+  - m_Path: root/root/def-pinky3.R/def-pinky3.R_end
+    m_Weight: 1
+  - m_Path: root/root/def-ring3.L
+    m_Weight: 1
+  - m_Path: root/root/def-ring3.L/def-ring3.L_end
+    m_Weight: 1
+  - m_Path: root/root/def-ring3.R
+    m_Weight: 1
+  - m_Path: root/root/def-ring3.R/def-ring3.R_end
+    m_Weight: 1
+  - m_Path: root/root/def-thumb3.L
+    m_Weight: 1
+  - m_Path: root/root/def-thumb3.L/def-thumb3.L_end
+    m_Weight: 1
+  - m_Path: root/root/def-thumb3.R
+    m_Weight: 1
+  - m_Path: root/root/def-thumb3.R/def-thumb3.R_end
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.L
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.L/ctrl-ik-wristpole.L
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.L/ctrl-ik-wristpole.L/ctrl-ik-wristpole.L_end
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.L/mec-ik-palm.L
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.L/mec-ik-palm.L/ctrl-sword-L
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.L/mec-ik-palm.L/ctrl-sword-L/ctrl-sword-L_end
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.R
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.R/ctrl-ik-wristpole.R
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.R/ctrl-ik-wristpole.R/ctrl-ik-wristpole.R_end
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.R/mec-ik-palm.R
+    m_Weight: 1
+  - m_Path: root/root/mec-ik-wrist01.R/mec-ik-palm.R/mec-ik-palm.R_end
+    m_Weight: 1
+  - m_Path: root/root/properties
+    m_Weight: 1
+  - m_Path: root/root/properties/properties_end
+    m_Weight: 1
