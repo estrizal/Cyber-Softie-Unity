@@ -4090,7 +4090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority:
     Enabled: 1
-    m_Value: 1
+    m_Value: 2
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
@@ -8142,8 +8142,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4561432291791814419, guid: 5041853304921bd4f9f2396bf6954a94, type: 3}
+      propertyPath: dashForce
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561432291791814419, guid: 5041853304921bd4f9f2396bf6954a94, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561432291791814419, guid: 5041853304921bd4f9f2396bf6954a94, type: 3}
+      propertyPath: dashDuration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4561432291791814419, guid: 5041853304921bd4f9f2396bf6954a94, type: 3}
       propertyPath: attackCooldown

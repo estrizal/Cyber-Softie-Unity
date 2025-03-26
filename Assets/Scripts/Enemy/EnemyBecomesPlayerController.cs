@@ -209,9 +209,10 @@ public class EnemyBecomesPlayerController : MonoBehaviour
     IEnumerator StartAttack()
     {
         attacking = true;
-        ApplyBrakes(brakeStrength * 160);
+        ApplyBrakes(brakeStrength * 70);
         
         // Play attack animation
+        
         animator.Play("attack1"); // Changed from Play() to SetTrigger()
         
         // Get katana slash component
@@ -224,19 +225,7 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         
         // Wait for attack animation to complete
         yield return new WaitForSeconds(attackCooldown);
-        if (isMoving)
-            {
-            
-                animator.Play("MotionBlendTree");
-            }
-            else
-            {
-                animator.Play("idle");
-                
-            }
         attacking = false;
-
-        
     }
 
     private void HandleDeath()
@@ -273,8 +262,14 @@ public class EnemyBecomesPlayerController : MonoBehaviour
 
     private void OnDash()
     {
-        if (canDash && !attacking && !isDashing)
+        if (canDash && !isDashing)
         {
+            if (attacking)
+            {
+                StopCoroutine(StartAttack());
+                attacking = false;
+                animator.Play("idle");
+            }
             StartCoroutine(PerformDash());
         }
     }
@@ -320,8 +315,8 @@ public class EnemyBecomesPlayerController : MonoBehaviour
             yield return null;
         }
 
-        // Reset velocity after dash
-        rb.linearVelocity = Vector3.zero;
+        
+        rb.linearVelocity = dashDirection*3.0f;
         isDashing = false;
 
         // Start cooldown
