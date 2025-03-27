@@ -104,6 +104,8 @@ public class EnemyController : MonoBehaviour
     {
         if (gameManager == null || gameManager.GetCurrentPossessedEntity() == null)
         {
+            
+            
             // Get player position from ghost if not possessed
             if (gameManager?.currentGhost != null)
             {
