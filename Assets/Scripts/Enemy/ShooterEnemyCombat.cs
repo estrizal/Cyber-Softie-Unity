@@ -6,9 +6,16 @@ public class ShooterEnemyCombat : MonoBehaviour
     private GameManager gameManager;
     private GameObject player;
     private Gun gun;
+    
+    [Header("Combat Settings")]
+    public float attackRange = 15f;
     public float attackCooldown = 1f;
-    private bool isShooting;
+    
+    [Header("References")]
     public Transform weaponHolder;
+    
+    private bool isShooting;
+    private const float heightOffset = 0.5f; // To account for character height differences
 
     void Start()
     {
@@ -22,10 +29,8 @@ public class ShooterEnemyCombat : MonoBehaviour
 
     void Update()
     {
-        
         if (gameManager == null || gameManager.GetCurrentPossessedEntity() == null)
         {
-            // Get player position from ghost if not possessed
             if (gameManager?.currentGhost != null)
             {
                 player = gameManager.currentGhost;
@@ -39,33 +44,46 @@ public class ShooterEnemyCombat : MonoBehaviour
         {
             player = gameManager.GetCurrentPossessedEntity();
         }
+        
         if(player == null) return;
-        TryToShoot();
+        
         TrackPlayer();
+        TryToShoot();
     }
 
     void TrackPlayer()
     {
         if (player == null || weaponHolder == null) return;
 
-        // Body rotation (left-right)
+        // Body rotation
         Vector3 lookPos = player.transform.position - transform.position;
         Vector3 flatLookPos = new Vector3(lookPos.x, 0f, lookPos.z);
         transform.rotation = Quaternion.LookRotation(flatLookPos);
 
-        // Weapon holder rotation (up-down)
+        // Weapon aiming
         Vector3 weaponToPlayer = player.transform.position - weaponHolder.position;
         float angle = -Mathf.Atan2(weaponToPlayer.y, weaponToPlayer.magnitude) * Mathf.Rad2Deg;
         weaponHolder.localRotation = Quaternion.Euler(angle, 0f, 0f);
+
+        // Debug visualization
+        Debug.DrawLine(transform.position + Vector3.up * heightOffset, 
+                     player.transform.position, 
+                     IsPlayerInRange() ? Color.red : Color.gray);
     }
     
     void TryToShoot()
     {
-        if(!isShooting)
+        if(!isShooting && IsPlayerInRange())
         {
-            Vector3 direction = player.transform.position - transform.position;
+            Vector3 direction = (player.transform.position - transform.position).normalized;
             StartCoroutine(StartShooting(direction));
         }
+    }
+
+    bool IsPlayerInRange()
+    {
+        if(player == null) return false;
+        return Vector3.Distance(transform.position, player.transform.position) <= attackRange;
     }
 
     IEnumerator StartShooting(Vector3 direction)
@@ -75,6 +93,4 @@ public class ShooterEnemyCombat : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown);
         isShooting = false;
     }
-
 }
-

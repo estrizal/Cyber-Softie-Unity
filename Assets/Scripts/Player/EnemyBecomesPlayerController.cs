@@ -38,6 +38,8 @@ public class EnemyBecomesPlayerController : MonoBehaviour
     private GameManager gameManager;
     private Health health;
     public bool isPossessed = false;
+    
+    private IInteractable currentInteractable;
 
     void Awake()
     {
@@ -55,7 +57,34 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         health.onDeath.AddListener(HandleDeath);
         health.onDamaged.AddListener(HandleDamaged);
     }
+    // Interaction logic using collision triggers
+    private void OnTriggerEnter(Collider other)
+    {
+        var interactable = other.GetComponent<IInteractable>();
 
+        if (interactable != null)
+        {
+            currentInteractable = interactable;
+            InteractionPromptUI.Instance.ShowPrompt(interactable.InteractionPrompt);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        var interactable = other.GetComponent<IInteractable>();
+
+        if (interactable != null && interactable == currentInteractable)
+        {
+            currentInteractable = null;
+            InteractionPromptUI.Instance.HidePrompt();
+        }
+    }
+
+    // Interaction handling
+    private void HandleInteractAction()
+    {
+        currentInteractable?.Interact();
+    }
     private void OnEnable()
     {
         InputReader.OnDashPerformed += OnDash;
