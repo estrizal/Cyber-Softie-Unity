@@ -8,6 +8,9 @@ public class Health : MonoBehaviour
     public float maxHealth = 100f;
     public float currentHealth;
     
+    [Header("Enemy Configuration")]
+    public bool isStaticEnemy = false; // Set this for shooter enemies in inspector
+    
     [Header("Hit Response")]
     public float knockbackForce = 5f;
     public bool useHitStop = true;
@@ -22,9 +25,9 @@ public class Health : MonoBehaviour
 
     [Header("Knockback Settings")]
     public float baseKnockbackForce = 5f;
-    public float playerReceivedKnockback = 1f;     // Player takes normal knockback
-    public float playerDealtKnockback = 1.5f;      // Player deals more knockback
-    public float enemyKnockbackMultiplier = 1f;    // Base multiplier for enemies
+    public float playerReceivedKnockback = 1f;     
+    public float playerDealtKnockback = 1.5f;      
+    public float enemyKnockbackMultiplier = 1f;    
 
     public UnityEvent onDeath;
     public UnityEvent<float> onHealthChanged;
@@ -46,19 +49,22 @@ public class Health : MonoBehaviour
     {
         if (currentHealth <= 0 || damage <= 0) return;
 
-        // Ensure hit direction is normalized
         hitDirection = hitDirection.normalized;
         
         currentHealth = Mathf.Max(0, currentHealth - damage);
         onHealthChanged?.Invoke(currentHealth / maxHealth);
         onDamaged?.Invoke();
 
-        float knockbackMultiplier = GetComponent<EnemyBecomesPlayerController>() != null 
-            ? playerReceivedKnockback 
-            : playerDealtKnockback;
+        float knockbackMultiplier = GetKnockbackMultiplier();
         
-
-        StartCoroutine(HitResponse(hitPoint, hitDirection, knockbackMultiplier));
+        if(!isStaticEnemy) // Only apply knockback to non-static enemies
+        {
+            StartCoroutine(HitResponse(hitPoint, hitDirection, knockbackMultiplier));
+        }
+        else
+        {
+            StartCoroutine(HitEffectRoutine(hitPoint, hitDirection));
+        }
 
         if (currentHealth <= 0)
         {
@@ -66,15 +72,23 @@ public class Health : MonoBehaviour
         }
     }
 
+    private float GetKnockbackMultiplier()
+    {
+        if(GetComponent<EnemyBecomesPlayerController>() != null)
+        {
+            return playerReceivedKnockback;
+        }
+        return isStaticEnemy ? 0f : enemyKnockbackMultiplier;
+    }
+
     private IEnumerator HitResponse(Vector3 hitPoint, Vector3 hitDirection, float knockbackMultiplier)
     {
-        // Apply knockback
-        if (rb != null)
+        // Apply knockback only if not static enemy
+        if (rb != null && !isStaticEnemy)
         {
             rb.AddForce(hitDirection * baseKnockbackForce * knockbackMultiplier, ForceMode.Impulse);
         }
 
-        // Hit stop and material flash
         yield return StartCoroutine(HitEffectRoutine(hitPoint, hitDirection));
     }
 
@@ -84,11 +98,9 @@ public class Health : MonoBehaviour
         {
             if (!useHitStop) yield break;
         
-            // Store original time scale
             float originalTimeScale = Time.timeScale;
             Time.timeScale = 0.1f;
         
-            // Handle hit flash materials
             if (hitFlashMaterial != null && meshRenderers != null)
             {
                 foreach (var renderer in meshRenderers)
@@ -100,10 +112,8 @@ public class Health : MonoBehaviour
         
             yield return new WaitForSecondsRealtime(hitStopDuration);
         
-            // Always reset time scale
             Time.timeScale = originalTimeScale;
         
-            // Reset materials only if object still exists
             if (this != null && meshRenderers != null)
             {
                 for (int i = 0; i < meshRenderers.Length; i++)
@@ -115,7 +125,6 @@ public class Health : MonoBehaviour
         }
         finally
         {
-            // Guarantee time scale reset even if coroutine is interrupted
             if (Time.timeScale < 1f)
             {
                 Time.timeScale = 1f;

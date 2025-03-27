@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     private bool isIsometricMode = false;
 
+    public Material katanaEnemyMat;
+
     [Header("Player Settings")]
 
     public LayerMask possessableLayer;  // Layer for possessable enemies
@@ -37,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     private void InitializeGame()
     {
+        katanaEnemyMat.color = Color.red;
+        katanaEnemyMat.SetColor("_EmissionColor", Color.red*0.1f);
         if (currentGhost == null)
         {
             Debug.LogError("No ghost reference set in GameManager!");
@@ -163,6 +167,7 @@ public class GameManager : MonoBehaviour
         possessedController = entity.GetComponent<EnemyBecomesPlayerController>();
         InputReader inputReader = entity.GetComponent<InputReader>();
         NavMeshAgent agent = entity.GetComponent<NavMeshAgent>();
+        Health health = entity.GetComponent<Health>();
 
         // Debug component checks
         Debug.Log($"Found components - EnemyController: {enemyController != null}, " +
@@ -238,7 +243,10 @@ public class GameManager : MonoBehaviour
             ghostController.enabled = false;
             Debug.Log("Cleaned up and disabled ghost");
         }
+        katanaEnemyMat.color = Color.blue;
+        katanaEnemyMat.SetColor("_EmissionColor", Color.blue*0.1f);
 
+        health.currentHealth = 100f;
         Debug.Log($"Possession of {entity.name} complete with input reset");
     }
 
@@ -256,14 +264,15 @@ public class GameManager : MonoBehaviour
             EnemyController enemyController = _currentPossessedEntity.GetComponent<EnemyController>();
             InputReader inputReader = _currentPossessedEntity.GetComponent<InputReader>();
             NavMeshAgent enemyAgent = _currentPossessedEntity.GetComponent<NavMeshAgent>();
-
+            Animator animator = _currentPossessedEntity.GetComponent<Animator>();
+            Health health = _currentPossessedEntity.GetComponent<Health>();
             if (enemyController != null)
             {
                 enemyController.isPossessed = false;
-                //enemyController.enabled = true;  // Re-enable enemy AI
+                enemyController.enabled = true;  // Re-enable enemy AI
                 if (enemyAgent != null)
                 {
-                    //enemyAgent.enabled = true;
+                    enemyAgent.enabled = true;
                 }
             }
 
@@ -275,7 +284,10 @@ public class GameManager : MonoBehaviour
                 possessedController.enabled = false;
                 possessedController.isPossessed = false;
             }
-
+            animator.SetBool("isMoving", false);
+            
+            
+            
             // Reset and re-initialize ghost
             if (currentGhost != null)
             {
@@ -320,9 +332,12 @@ public class GameManager : MonoBehaviour
                     isometricCinemachineCamera.Follow = currentGhost.transform;
                 }
             }
-
+            health.currentHealth = 30f;
+            katanaEnemyMat.color = Color.red;
+            katanaEnemyMat.SetColor("_EmissionColor", Color.red*0.1f);
             _currentPossessedEntity = null;
             possessedController = null;
+            
             Debug.Log("Depossession complete with input reset");
         }
     }
