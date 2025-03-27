@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Authen2 : MonoBehaviour, IInteractable
 {
@@ -8,6 +9,9 @@ public class Authen2 : MonoBehaviour, IInteractable
 
     public AudioSource Authen_Success;
     public AudioSource Authen_Failed;
+    public AudioSource combat_song;
+    public AudioSource Voiceover2;
+    public AudioSource bg_song;
 
     [Header("References")]
     public Gate gateToOpen; // Reference to the gate object
@@ -46,7 +50,10 @@ public class Authen2 : MonoBehaviour, IInteractable
         Debug.Log("Authentication successful. Gate opening...");
         if (Authen_Success != null)
         {
+            bg_song.Stop();
             Authen_Success.Play();
+
+            StartCoroutine(PlayDelayedVoiceover());
         }
         // Optional: Add sound or animation feedback here
     }
@@ -56,4 +63,25 @@ public class Authen2 : MonoBehaviour, IInteractable
         isElectricityFixed = true;
         Debug.Log("Electricity has been fixed: Authentication button now functional.");
     }
+
+    private IEnumerator PlayDelayedVoiceover()
+    {
+        yield return new WaitForSeconds(3f);
+
+        if (Voiceover2 != null)
+        {
+            Voiceover2.Play();
+            Debug.Log("Playing secondary voiceover");
+        }
+
+        yield return new WaitForSeconds(5f);
+
+        if (combat_song != null)
+        {
+            combat_song.Play();
+            Debug.Log("Playing combat music");
+        }
+    }
+
+
 }

@@ -1,13 +1,14 @@
 using UnityEngine;
+using System.Collections; // Add this for coroutines
 
 public class AuthenticationButton : MonoBehaviour, IInteractable
 {
-
     public string MESSAGE = "Press and hold 'E' to hack";
     public AudioSource authensucess;
-    public string InteractionPrompt => MESSAGE;//"Fingerprint authentication board\nPress [E] to hack";
-
-    public Gate gateToOpen; // Reference to the gate object
+    public AudioSource Voiceover2;
+    public AudioSource Bg_song;
+    public string InteractionPrompt => MESSAGE;
+    public Gate gateToOpen;
 
     private bool isActivated = false;
 
@@ -18,15 +19,34 @@ public class AuthenticationButton : MonoBehaviour, IInteractable
         isActivated = true;
         gateToOpen.OpenGate();
         Debug.Log("Authentication successful. Gate opening...");
+
         if (authensucess != null)
         {
-            // Ensure background music loops
-            authensucess.Play(); // Start playing background music
+            authensucess.Play();
+            // Start coroutine to play voiceover after 3 seconds
+            StartCoroutine(PlayDelayedVoiceover());
         }
 
+        // Optional: Add visual feedback here
+    }
 
+    private IEnumerator PlayDelayedVoiceover()
+    {
+        yield return new WaitForSeconds(4f);
 
+        if (Voiceover2 != null)
+        {
+            Voiceover2.Play();
+            Debug.Log("Playing secondary voiceover");
+        }
+        
+        yield return new WaitForSeconds(2f);
 
-        // Optionally add visual feedback here (e.g., change button color, play sound)
+        if (Bg_song != null)
+        {
+            Bg_song.Play();
+            Debug.Log("Playing background music");
+        }
+
     }
 }

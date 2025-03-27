@@ -9,7 +9,7 @@ public class BackgroundMusic : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (audioSource != null)
         {
-            audioSource.loop = true; // Ensure background music loops
+            //audioSource.loop = true; // Ensure background music loops
             audioSource.Play(); // Start playing background music
         }
     }
