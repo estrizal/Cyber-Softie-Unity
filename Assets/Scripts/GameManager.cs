@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private GhostCharacterController ghostController;
     private EnemyBecomesPlayerController possessedController;
     private InputReader ghostInput;
+    public int playerRoomNumber;
 
     private void Awake()
     {
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
             ghostInput.OnInteractPerformed += HandleInteractPerformed;
             ghostInput.OnInteract2Performed += HandleDepossession;
         }
-
+        playerRoomNumber =1;
         _currentPossessedEntity = null;
     }
 
@@ -247,7 +248,7 @@ public class GameManager : MonoBehaviour
         katanaEnemyMat.SetColor("_EmissionColor", Color.blue*0.1f);
         health.maxHealth = 100f;
         health.currentHealth = 100f;
-        
+        entity.tag ="Player";
         Debug.Log($"Possession of {entity.name} complete with input reset");
     }
 
@@ -286,7 +287,8 @@ public class GameManager : MonoBehaviour
                 possessedController.isPossessed = false;
             }
             animator.SetBool("isMoving", false);
-            
+
+            _currentPossessedEntity.tag = "Room"+ playerRoomNumber.ToString();
             
             
             // Reset and re-initialize ghost

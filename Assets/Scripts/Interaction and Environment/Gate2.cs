@@ -4,7 +4,7 @@ public class Gate2 : MonoBehaviour
 {
     public float openHeight = 5f; // How high the gate moves up
     public float openSpeed = 2f; // Speed of opening
-
+    private GameManager gameManager;
     private Vector3 initialPosition;
     private Vector3 targetPosition;
     private bool shouldOpen = false;
@@ -12,6 +12,7 @@ public class Gate2 : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameManager.Instance;
         initialPosition = transform.position;
         targetPosition = initialPosition + Vector3.up * openHeight;
     }
@@ -47,7 +48,7 @@ public class Gate2 : MonoBehaviour
         {
             Gate_open_audio.Play();
         }
-
+        gameManager.playerRoomNumber = 2;
         // Optionally add sound or animation trigger here
     }
 }
