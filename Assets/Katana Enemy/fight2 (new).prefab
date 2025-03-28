@@ -3071,9 +3071,8 @@ MonoBehaviour:
   slashEffectPrefab: {fileID: 0}
   slashDuration: 0.3
   followSword: 1
-  debugMode: 0
-  poolSize: 5
   slashThroughGround: 1
+  poolSize: 5
 --- !u!1 &3117780424059347028
 GameObject:
   m_ObjectHideFlags: 0
@@ -9871,12 +9870,14 @@ MonoBehaviour:
   isPossessed: 0
   attackRange: 0.5
   attackCooldown: 1.5
+  attackDuration: 0.6
   animationFactor: 0.8
-  fieldOfViewAngle: 90
+  attackWindupTime: 0.4
   sightRange: 15
+  fieldOfViewAngle: 90
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 64
   minDistanceToJoinChase: 20
   chanceToJoinChase: 0.3
   decisionUpdateInterval: 0.5
@@ -9961,10 +9962,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  isStaticEnemy: 0
   knockbackForce: 60
   useHitStop: 1
   hitStopDuration: 0.1
-  slashEffectPrefab: {fileID: 0}
   hitFlashMaterial: {fileID: 2100000, guid: 5027108124ad3104abb1cd31b872ae82, type: 2}
   hitFlashDuration: 0.1
   baseKnockbackForce: 50

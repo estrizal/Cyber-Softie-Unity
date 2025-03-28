@@ -245,8 +245,9 @@ public class GameManager : MonoBehaviour
         }
         katanaEnemyMat.color = Color.blue;
         katanaEnemyMat.SetColor("_EmissionColor", Color.blue*0.1f);
-
+        health.maxHealth = 100f;
         health.currentHealth = 100f;
+        
         Debug.Log($"Possession of {entity.name} complete with input reset");
     }
 
@@ -332,6 +333,7 @@ public class GameManager : MonoBehaviour
                     isometricCinemachineCamera.Follow = currentGhost.transform;
                 }
             }
+            health.maxHealth = 30f;
             health.currentHealth = 30f;
             katanaEnemyMat.color = Color.red;
             katanaEnemyMat.SetColor("_EmissionColor", Color.red*0.1f);

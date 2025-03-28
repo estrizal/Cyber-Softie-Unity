@@ -48,7 +48,7 @@ public class EnemyController : MonoBehaviour
     [Header("Vision Settings")]
     public float sightRange = 15f;
     public float fieldOfViewAngle = 100f;
-    public LayerMask obstacleLayer;
+    //public LayerMask obstacleLayer;
     
     [Header("Coordination Settings")]
     public float minDistanceToJoinChase = 20f;
@@ -168,9 +168,18 @@ public class EnemyController : MonoBehaviour
     IEnumerator WaitAfterPatrol()
     {
         isWaiting = true;
-        agent.isStopped = true;
+        if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
+        {
+            
+            agent.isStopped = true;
+        }
+        
         yield return new WaitForSeconds(Random.Range(waitTimeAfterPatrol, waitTimeAfterPatrol+1.5f));
-        agent.isStopped = false;
+        
+        if (agent != null && agent.enabled && agent.isOnNavMesh)
+        {
+            agent.isStopped = false;
+        }
         isWaiting = false;
         currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
     }
@@ -415,16 +424,19 @@ public class EnemyController : MonoBehaviour
     private IEnumerator HandleAttackCooldown()
     {
         isInCooldown = true;
-        agent.isStopped = true;
-        agent.velocity = Vector3.zero;
+        if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
+        {
+            
+            agent.isStopped = true;
+        }
         
         yield return new WaitForSeconds(attackCooldown);
         
         if (agent != null && agent.enabled && agent.isOnNavMesh)
         {
-            isInCooldown = false;
             agent.isStopped = false;
         }
+        isInCooldown = false;
     }
 
     private void PossessedBehavior()
@@ -463,7 +475,7 @@ public class EnemyController : MonoBehaviour
 
         RaycastHit hit;
         Vector3 eyePosition = transform.position + Vector3.up;
-        if (Physics.Raycast(eyePosition, directionToPlayer.normalized, out hit, sightRange, obstacleLayer))
+        if (Physics.Raycast(eyePosition, directionToPlayer.normalized, out hit, sightRange))
         {
             return hit.transform == playerTransform;
         }
