@@ -4637,6 +4637,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6919683763462532184, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1946810465}
+    - targetCorrespondingSourceObject: {fileID: 377145664466182588, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 823461481}
+    - targetCorrespondingSourceObject: {fileID: 377145664466182588, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 823461480}
     - targetCorrespondingSourceObject: {fileID: 7905414190033819348, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 304164870}
@@ -5481,6 +5487,44 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.2673197, y: 2.198133, z: 2.0607336}
   m_Center: {x: -0.022548443, y: 0.017477632, z: 0.030367015}
+--- !u!1 &823461476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 377145664466182588, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+  m_PrefabInstance: {fileID: 660848083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &823461480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823461476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6d36ddcba05104795c48568435c8b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &823461481
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823461476}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1.9999998, z: 0.21263732}
+  m_Center: {x: 0, y: 2.7438582e-15, z: -4.6222267}
 --- !u!1 &845028608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -9186007496021145544, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
@@ -29413,6 +29457,7 @@ GameObject:
   - component: {fileID: 878090915}
   - component: {fileID: 878090914}
   - component: {fileID: 878090923}
+  - component: {fileID: 8944344431360404909}
   m_Layer: 9
   m_Name: Dead_Enemy_Katana (new)
   m_TagString: Room1
@@ -54703,6 +54748,23 @@ MonoBehaviour:
   isSprinting: 0
   isAiming: 0
   isEmoting: 0
+--- !u!114 &8944344431360404909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3694911040137354594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb69794fd471e349b579d61780db75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDuration: 0.2
+  meshRefreshRate: 0.1
+  positionToSpawn: {fileID: 1727536032138465426}
+  trailMaterial: {fileID: 2100000, guid: c3800011f778bd742955b1355650448e, type: 2}
+  destroyDelay: 1
 --- !u!1 &8952622721237712803
 GameObject:
   m_ObjectHideFlags: 0
