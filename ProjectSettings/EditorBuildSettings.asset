@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Game.unity
-    guid: 16078bb29383b0f4faef4a0e96f0f074
+    guid: b9e4ccb2323ea64498a8280e558b2f02
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/ProSoftBody/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
-    path: Assets/Scenes/Game-Re.unity
+    path: Assets/Scenes/Game-Re-before.unity
     guid: cd04e7f0ae3927c4d9fdbfa216c07b51
+  - enabled: 1
+    path: Assets/Scenes/Game-Re.unity
+    guid: 6642e477bd15c014988218c3dcada706
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
