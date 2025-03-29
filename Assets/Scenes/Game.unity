@@ -9354,6 +9354,7 @@ MonoBehaviour:
     m_Bits: 4608
   possessionRange: 1
   currentGhost: {fileID: 1797751787}
+  playerRoomNumber: 0
 --- !u!1 &1668280464 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6014503084441653313, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
@@ -28463,7 +28464,7 @@ GameObject:
   - component: {fileID: 878090923}
   m_Layer: 9
   m_Name: Dead_Enemy_Katana (new)
-  m_TagString: Untagged
+  m_TagString: Room1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51136,6 +51137,7 @@ GameObject:
   - component: {fileID: 20137794}
   - component: {fileID: 20137793}
   - component: {fileID: 20137792}
+  - component: {fileID: 8696446789780364208}
   m_Layer: 9
   m_Name: fight2 (new)
   m_TagString: Room1
@@ -52534,6 +52536,27 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!65 &8696446789780364208
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394168931425643232}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4416069, y: 2.790319, z: 0.2737277}
+  m_Center: {x: -0.01808984, y: 1.2392286, z: 0.5676808}
 --- !u!114 &8696446790520559772
 MonoBehaviour:
   m_ObjectHideFlags: 0
