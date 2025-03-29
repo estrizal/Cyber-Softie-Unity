@@ -52,6 +52,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Godrays
+    second: {fileID: 2100000, guid: c752f9a31ad859a4b8d559949b6da7c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Grey1
     second: {fileID: 2100000, guid: e43a4c8a8d6c4ee4b992cbc64d04c3a2, type: 2}
   - first:
@@ -59,6 +64,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Grey2
     second: {fileID: 2100000, guid: bfe2f1ce8f233014cb2b975b8ea5e87a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hmm.._
+    second: {fileID: 2100000, guid: 24decca1f092321479e78dee4c7d7dc3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -167,13 +177,38 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.023
+    second: {fileID: 2100000, guid: 05001708ff7676742bc32d13472e8a32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material.024
     second: {fileID: 2100000, guid: e03395c7751d92b4e91fb92c56986ee8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.025
+    second: {fileID: 2100000, guid: a67443b002b0a784a92536deb74dcab3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.026
+    second: {fileID: 2100000, guid: b4c20c547d9eb3d4193aea34888999ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.027
+    second: {fileID: 2100000, guid: 93bf3f577b4e0cc419bc4a25fce47cf3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: ORANGE
     second: {fileID: 2100000, guid: d861212e0aa2033449b442c8c74bce15, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Railing
+    second: {fileID: 2100000, guid: d573d87752f166245957babe1baa09ff, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -197,6 +232,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Transpp
+    second: {fileID: 2100000, guid: 9ecca20a93a4b7a408253b1c44216642, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Yellow emmision
     second: {fileID: 2100000, guid: f20a6c6b8f8fced458a2b7aba979f058, type: 2}
   - first:
@@ -204,6 +244,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Yellow emmision.001
     second: {fileID: 2100000, guid: 984c3ccc8c7fc23419afd878c2082981, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: normal Yellow
+    second: {fileID: 2100000, guid: bdbc8090fd48b1345b7e7f8771123805, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
