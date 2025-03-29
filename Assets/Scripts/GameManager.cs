@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public CinemachineCamera thirdPersonCinemachineCamera;
     public CinemachineCamera isometricCinemachineCamera;
+    public CinemachineCamera shooterMoveCam;
+    private bool isShooter = false;
     public static GameManager Instance { get; private set; }
     private bool isIsometricMode = false;
 
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     private GameObject _currentPossessedEntity;
     private GhostCharacterController ghostController;
     private EnemyBecomesPlayerController possessedController;
+    private ShooterEnemyBecomesPlayerController shooterPossessedController;
     private InputReader ghostInput;
     public int playerRoomNumber;
 
@@ -141,11 +144,25 @@ public class GameManager : MonoBehaviour
 
         foreach (Collider col in nearbyEntities)
         {
-            EnemyController enemy = col.GetComponent<EnemyController>();
-            if (enemy != null && !enemy.isPossessed)
+            // Try to get either enemy type controller
+            EnemyController katanaEnemy = col.GetComponent<EnemyController>();
+            ShooterEnemyCombat shooterEnemy = col.GetComponent<ShooterEnemyCombat>();
+
+            // Check if it's a katana enemy that can be possessed
+            if (katanaEnemy != null && !katanaEnemy.isPossessed)
             {
-                Debug.Log($"Possessing {col.gameObject.name}"); // Debug log
+                Debug.Log($"Possessing katana enemy: {col.gameObject.name}");
                 PossessEntity(col.gameObject);
+                break;
+            }
+            // Check if it's a shooter enemy that can be possessed
+            else if (shooterEnemy != null && !shooterEnemy.isPossessed)
+            {
+                Debug.Log($"Possessing shooter enemy: {col.gameObject.name}");
+                isShooter = true;
+                shooterMoveCam.gameObject.SetActive(true);
+                PossessEntity(col.gameObject);
+                
                 break;
             }
         }
@@ -165,68 +182,87 @@ public class GameManager : MonoBehaviour
 
         // Get all required components
         EnemyController enemyController = entity.GetComponent<EnemyController>();
+        ShooterEnemyCombat shooterCombat = entity.GetComponent<ShooterEnemyCombat>();
         possessedController = entity.GetComponent<EnemyBecomesPlayerController>();
+        shooterPossessedController = entity.GetComponent<ShooterEnemyBecomesPlayerController>();
         InputReader inputReader = entity.GetComponent<InputReader>();
         NavMeshAgent agent = entity.GetComponent<NavMeshAgent>();
         Health health = entity.GetComponent<Health>();
 
         // Debug component checks
         Debug.Log($"Found components - EnemyController: {enemyController != null}, " +
-                  $"PlayerController: {possessedController != null}, " +
+                  $"ShooterCombat: {shooterCombat != null}, " +
+                  $"KatanaController: {possessedController != null}, " +
+                  $"ShooterController: {shooterPossessedController != null}, " +
                   $"InputReader: {inputReader != null}, " +
                   $"NavMeshAgent: {agent != null}");
 
-        // Handle enemy controller
+        // Disable AI components
         if (enemyController != null)
         {
             enemyController.isPossessed = true;
             enemyController.enabled = false;
-            if (agent != null)
-            {
-                agent.enabled = false;
-            }
-            Debug.Log("Disabled enemy AI and navigation");
+        }
+        if (shooterCombat != null)
+        {
+            shooterCombat.enabled = false;
+        }
+        if (agent != null)
+        {
+            agent.enabled = false;
         }
 
-        // Handle player controller
-        if (possessedController != null)
+        // Enable appropriate player controller based on enemy type
+        bool isShooterEnemy = shooterPossessedController != null;
+        
+        if (isShooterEnemy)
         {
-            possessedController.enabled = true;
-            possessedController.isPossessed = true;
-            possessedController.gameIsInThirdPerson = !isIsometricMode; // Set initial camera mode
-
-            // Setup input system
-            if (inputReader != null)
+            if (shooterPossessedController != null)
             {
-                // Clean up old subscriptions
-                inputReader.OnInteract2Performed -= HandleDepossession;
-                
-                // Reset input system
-                inputReader.ResetInput();
-                
-                // Add new subscriptions and enable
-                inputReader.OnInteract2Performed += HandleDepossession;
-                inputReader.enabled = true;
-                Debug.Log("Reset and enabled possessed entity input system");
+                shooterPossessedController.enabled = true;
+                shooterPossessedController.isPossessed = true;
+                shooterPossessedController.gameIsInThirdPerson = !isIsometricMode;
             }
-            else
-            {
-                Debug.LogError("No InputReader found on possessed entity!");
-                return;
-            }
-
-            // Setup camera
-            if (thirdPersonCinemachineCamera && isometricCinemachineCamera)
-            {
-                thirdPersonCinemachineCamera.Follow = entity.transform;
-                isometricCinemachineCamera.Follow = entity.transform;
-                Debug.Log("Updated camera targets");
-            }
+            if (possessedController != null) possessedController.enabled = false;
         }
         else
         {
-            Debug.LogError("No EnemyBecomesPlayerController found on possessed entity!");
+            if (possessedController != null)
+            {
+                possessedController.enabled = true;
+                possessedController.isPossessed = true;
+                possessedController.gameIsInThirdPerson = !isIsometricMode;
+            }
+            if (shooterPossessedController != null) shooterPossessedController.enabled = false;
+        }
+
+        // Setup input system
+        if (inputReader != null)
+        {
+            // Clean up old subscriptions
+            inputReader.OnInteract2Performed -= HandleDepossession;
+            
+            // Reset input system
+            inputReader.ResetInput();
+            
+            // Add new subscriptions and enable
+            inputReader.OnInteract2Performed += HandleDepossession;
+            inputReader.enabled = true;
+            Debug.Log("Reset and enabled possessed entity input system");
+        }
+        else
+        {
+            Debug.LogError("No InputReader found on possessed entity!");
             return;
+        }
+
+        // Setup camera
+        if (thirdPersonCinemachineCamera && isometricCinemachineCamera)
+        {
+            thirdPersonCinemachineCamera.Follow = entity.transform;
+            isometricCinemachineCamera.Follow = entity.transform;
+            shooterMoveCam.Follow = entity.transform;
+            Debug.Log("Updated camera targets");
         }
 
         // Handle ghost cleanup
@@ -244,11 +280,16 @@ public class GameManager : MonoBehaviour
             ghostController.enabled = false;
             Debug.Log("Cleaned up and disabled ghost");
         }
+
+        // Set common properties
         katanaEnemyMat.color = Color.blue;
-        katanaEnemyMat.SetColor("_EmissionColor", Color.blue*0.1f);
-        health.maxHealth = 100f;
-        health.currentHealth = 100f;
-        entity.tag ="Player";
+        katanaEnemyMat.SetColor("_EmissionColor", Color.blue * 0.1f);
+        if (health != null)
+        {
+            health.maxHealth = 100f;
+            health.currentHealth = 100f;
+        }
+        entity.tag = "Player";
         Debug.Log($"Possession of {entity.name} complete with input reset");
     }
 
@@ -262,35 +303,58 @@ public class GameManager : MonoBehaviour
             spawnOffset.y = 0.5f;
             Vector3 spawnPosition = _currentPossessedEntity.transform.position + spawnOffset;
 
-            // First clean up possessed entity
+            // Get all components
             EnemyController enemyController = _currentPossessedEntity.GetComponent<EnemyController>();
+            ShooterEnemyCombat shooterCombat = _currentPossessedEntity.GetComponent<ShooterEnemyCombat>();
             InputReader inputReader = _currentPossessedEntity.GetComponent<InputReader>();
             NavMeshAgent enemyAgent = _currentPossessedEntity.GetComponent<NavMeshAgent>();
             Animator animator = _currentPossessedEntity.GetComponent<Animator>();
             Health health = _currentPossessedEntity.GetComponent<Health>();
+
+            // Re-enable AI components
             if (enemyController != null)
             {
                 enemyController.isPossessed = false;
-                enemyController.enabled = true;  // Re-enable enemy AI
-                if (enemyAgent != null)
-                {
-                    enemyAgent.enabled = true;
-                }
+                enemyController.enabled = true;
+            }
+            if (shooterCombat != null)
+            {
+                shooterCombat.enabled = true;
+            }
+            if (enemyAgent != null)
+            {
+                enemyAgent.enabled = true;
             }
 
-            // Cleanup possessed entity components
-            if (possessedController != null && inputReader != null)
+            // Disable player controllers
+            if (possessedController != null)
             {
-                inputReader.OnInteract2Performed -= HandleDepossession;
-                inputReader.enabled = false;
                 possessedController.enabled = false;
                 possessedController.isPossessed = false;
             }
-            animator.SetBool("isMoving", false);
+            if (shooterPossessedController != null)
+            {
+                shooterPossessedController.enabled = false;
+                shooterPossessedController.isPossessed = false;
+            }
 
-            _currentPossessedEntity.tag = "Room"+ playerRoomNumber.ToString();
-            
-            
+            // Clean up input
+            if (inputReader != null)
+            {
+                inputReader.OnInteract2Performed -= HandleDepossession;
+                inputReader.enabled = false;
+            }
+
+            if (animator != null)
+            {
+                animator.SetBool("isMoving", false);
+            }
+            if (isShooter) {
+                shooterMoveCam.gameObject.SetActive(false);
+                isShooter = false;
+            }
+            _currentPossessedEntity.tag = "Room" + playerRoomNumber.ToString();
+
             // Reset and re-initialize ghost
             if (currentGhost != null)
             {
@@ -341,6 +405,7 @@ public class GameManager : MonoBehaviour
             katanaEnemyMat.SetColor("_EmissionColor", Color.red*0.1f);
             _currentPossessedEntity = null;
             possessedController = null;
+            shooterPossessedController = null;
             
             Debug.Log("Depossession complete with input reset");
         }
@@ -356,69 +421,6 @@ public class GameManager : MonoBehaviour
         _currentPossessedEntity = entity;
     }
 
-    public void SwitchToIsometricCamera()
-    {
-        if (!isIsometricMode && thirdPersonCinemachineCamera && isometricCinemachineCamera)
-        {
-            thirdPersonCinemachineCamera.gameObject.SetActive(false);
-            isometricCinemachineCamera.gameObject.SetActive(true);
-
-            // Update the follow target based on current state
-            Transform targetToFollow = currentGhost != null && currentGhost.activeSelf ?
-                currentGhost.transform :
-                _currentPossessedEntity?.transform;
-
-            if (targetToFollow != null)
-            {
-                isometricCinemachineCamera.Follow = targetToFollow;
-            }
-
-            // Update the perspective mode in the current possessed entity
-            if (_currentPossessedEntity != null)
-            {
-                var playerController = _currentPossessedEntity.GetComponent<EnemyBecomesPlayerController>();
-                if (playerController != null)
-                {
-                    playerController.gameIsInThirdPerson = false;
-                }
-            }
-
-            isIsometricMode = true;
-            Debug.Log("Switched to isometric camera");
-        }
-    }
-
-    public void SwitchToThirdPersonCamera()
-    {
-        if (isIsometricMode && thirdPersonCinemachineCamera && isometricCinemachineCamera)
-        {
-            isometricCinemachineCamera.gameObject.SetActive(false);
-            thirdPersonCinemachineCamera.gameObject.SetActive(true);
-
-            // Update the follow target based on current state
-            Transform targetToFollow = currentGhost != null && currentGhost.activeSelf ?
-                currentGhost.transform :
-                _currentPossessedEntity?.transform;
-
-            if (targetToFollow != null)
-            {
-                thirdPersonCinemachineCamera.Follow = targetToFollow;
-            }
-
-            // Update the perspective mode in the current possessed entity
-            if (_currentPossessedEntity != null)
-            {
-                var playerController = _currentPossessedEntity.GetComponent<EnemyBecomesPlayerController>();
-                if (playerController != null)
-                {
-                    playerController.gameIsInThirdPerson = true;
-                }
-            }
-
-            isIsometricMode = false;
-            Debug.Log("Switched to third person camera");
-        }
-    }
 
     private void OnDrawGizmos()
     {

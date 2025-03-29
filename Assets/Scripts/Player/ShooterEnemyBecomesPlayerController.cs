@@ -147,21 +147,22 @@ public class ShooterEnemyBecomesPlayerController : MonoBehaviour
             cameraRight.y = 0f;
             cameraRight.Normalize();
 
-            moveDirection = (cameraForward * InputReader.MoveComposite.y + 
+            moveDirection = (cameraForward * InputReader.MoveComposite.y +
                            cameraRight * InputReader.MoveComposite.x).normalized;
         }
         else
         {
             Vector3 isoForward = new Vector3(0.707f, 0, 0.707f);
             Vector3 isoRight = new Vector3(0.707f, 0, -0.707f);
-            moveDirection = (isoForward * InputReader.MoveComposite.y + 
+            moveDirection = (isoForward * InputReader.MoveComposite.y +
                            isoRight * InputReader.MoveComposite.x).normalized;
         }
 
-        rb.AddForce(moveDirection * moveSpeed, ForceMode.Acceleration);
+        // Increase movement speed by 10x
+        rb.AddForce(moveDirection * moveSpeed * 10f, ForceMode.Acceleration);
 
-        // Only rotate character in third person when moving
-        if (gameIsInThirdPerson && moveDirection != Vector3.zero)
+        // Rotate the GameObject on the Y-axis
+        if (moveDirection != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f);
@@ -170,9 +171,14 @@ public class ShooterEnemyBecomesPlayerController : MonoBehaviour
 
     private void UpdateWeaponAim()
     {
-        // Aim weapon based on camera forward direction
-        Vector3 aimDirection = thirdPersonCameraTransform.forward;
-        weaponHolder.forward = aimDirection;
+        if (weaponHolder == null || InputReader == null) return;
+
+        // Rotate the weapon holder on the X-axis using LookComposite
+        float lookVertical = InputReader.LookComposite.y; // Vertical look input
+        Vector3 weaponRotation = weaponHolder.localEulerAngles;
+        weaponRotation.x -= lookVertical; // Adjust X rotation
+        weaponRotation.x = Mathf.Clamp(weaponRotation.x, -45f, 45f); // Clamp to prevent extreme angles
+        weaponHolder.localEulerAngles = weaponRotation;
     }
 
     private void HandleShoot()

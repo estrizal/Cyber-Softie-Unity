@@ -15,8 +15,7 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
     public Action OnAttackPerformed;
     public Action OnDashPerformed;
     public Action OnInteract2Performed;
-    public event Action OnBlockStarted;
-    public event Action OnBlockCanceled;
+    public bool isAiming = false;
 
     void OnEnable() {
         if (controls!=null) {
@@ -101,6 +100,10 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
     void InputSystem.IPlayerActions.OnBlock(InputAction.CallbackContext context)
     {
         isBlocking = context.ReadValueAsButton();
+    }
+    void InputSystem.IPlayerActions.OnAim(InputAction.CallbackContext context)
+    {
+        isAiming = context.ReadValueAsButton();
     }
     // Optional: Add these if you need more granular control
     public void DisableInput()

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ShooterEnemyCombat : MonoBehaviour
 {
@@ -15,19 +16,47 @@ public class ShooterEnemyCombat : MonoBehaviour
     public Transform weaponHolder;
     
     private bool isShooting;
-    private const float heightOffset = 0.5f; // To account for character height differences
+    private const float heightOffset = 0.5f;
 
-    void Start()
+    [Header("Possession Settings")]
+    public bool isPossessed = false;
+    private ShooterEnemyBecomesPlayerController playerController;
+    private NavMeshAgent agent;
+
+    void Awake()
     {
-        gameManager = GameManager.Instance;
+        agent = GetComponent<NavMeshAgent>();
+        playerController = GetComponent<ShooterEnemyBecomesPlayerController>();
         gun = GetComponentInChildren<Gun>();
+
         if(gun == null)
         {
             Debug.LogError("No Gun component found in children!");
         }
     }
 
+    void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     void Update()
+    {
+        if (isPossessed)
+        {
+            HandlePossession();
+            return;
+        }
+
+        UpdatePlayerReference();
+        
+        if(player == null) return;
+        
+        TrackPlayer();
+        TryToShoot();
+    }
+
+    private void UpdatePlayerReference()
     {
         if (gameManager == null || gameManager.GetCurrentPossessedEntity() == null)
         {
@@ -44,11 +73,25 @@ public class ShooterEnemyCombat : MonoBehaviour
         {
             player = gameManager.GetCurrentPossessedEntity();
         }
-        
-        if(player == null) return;
-        
-        TrackPlayer();
-        TryToShoot();
+    }
+
+    private void HandlePossession()
+    {
+        // Disable AI components when possessed
+        if (agent != null && agent.enabled)
+        {
+            agent.isStopped = true;
+            agent.enabled = false;
+        }
+
+        // Enable player controller
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+        }
+
+        // Disable this script's behavior
+        enabled = false;
     }
 
     void TrackPlayer()
@@ -73,7 +116,7 @@ public class ShooterEnemyCombat : MonoBehaviour
     
     void TryToShoot()
     {
-        if(!isShooting && IsPlayerInRange())
+        if(!isShooting && IsPlayerInRange() && !isPossessed)
         {
             Vector3 direction = (player.transform.position - transform.position).normalized;
             StartCoroutine(StartShooting(direction));
@@ -92,5 +135,25 @@ public class ShooterEnemyCombat : MonoBehaviour
         gun.Shoot(direction);
         yield return new WaitForSeconds(attackCooldown);
         isShooting = false;
+    }
+
+    // Public method to handle possession state
+    public void SetPossessed(bool possessed)
+    {
+        isPossessed = possessed;
+        if (possessed)
+        {
+            HandlePossession();
+        }
+        else
+        {
+            // Reset when unpossessed
+            if (agent != null)
+            {
+                agent.enabled = true;
+                agent.isStopped = false;
+            }
+            enabled = true;
+        }
     }
 }
