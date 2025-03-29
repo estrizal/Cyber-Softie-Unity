@@ -265,6 +265,7 @@ MonoBehaviour:
   cursorIsLocked: 0
   isSprinting: 0
   isBlocking: 0
+  isAiming: 0
 --- !u!114 &20137793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,15 +333,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5721114351658437671, guid: 6a187490747527f4eae4602c1c777fe2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.378564
+      value: -55.20856
       objectReference: {fileID: 0}
     - target: {fileID: 5721114351658437671, guid: 6a187490747527f4eae4602c1c777fe2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.9641826
+      value: 3.9641829
       objectReference: {fileID: 0}
     - target: {fileID: 5721114351658437671, guid: 6a187490747527f4eae4602c1c777fe2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.2115629
+      value: -16.943562
       objectReference: {fileID: 0}
     - target: {fileID: 5721114351658437671, guid: 6a187490747527f4eae4602c1c777fe2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1814,7 +1815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8106128669864312198, guid: fb5bc873ad3ee8548a979fe8f1d9c7ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: -48.8
       objectReference: {fileID: 0}
     - target: {fileID: 8106128669864312198, guid: fb5bc873ad3ee8548a979fe8f1d9c7ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1822,7 +1823,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8106128669864312198, guid: fb5bc873ad3ee8548a979fe8f1d9c7ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.197
+      value: -10.535
       objectReference: {fileID: 0}
     - target: {fileID: 8106128669864312198, guid: fb5bc873ad3ee8548a979fe8f1d9c7ba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2388,6 +2389,7 @@ MonoBehaviour:
   cursorIsLocked: 0
   isSprinting: 0
   isBlocking: 0
+  isAiming: 0
 --- !u!114 &456200548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3335,15 +3337,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5721114351658437671, guid: 6a187490747527f4eae4602c1c777fe2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.378564
+      value: -55.20856
       objectReference: {fileID: 0}
     - target: {fileID: 5721114351658437671, guid: 6a187490747527f4eae4602c1c777fe2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.9641826
+      value: 3.9641829
       objectReference: {fileID: 0}
     - target: {fileID: 5721114351658437671, guid: 6a187490747527f4eae4602c1c777fe2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.2115629
+      value: -16.943562
       objectReference: {fileID: 0}
     - target: {fileID: 5721114351658437671, guid: 6a187490747527f4eae4602c1c777fe2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4310,6 +4312,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5446169893169118426, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1206830847}
+    - targetCorrespondingSourceObject: {fileID: 781679719685557685, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1654218388}
     - targetCorrespondingSourceObject: {fileID: -6733177361254619370, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1064694398}
@@ -5028,7 +5033,7 @@ Transform:
   m_GameObject: {fileID: 770767493}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2534013, y: -0.000000048674384, z: 0.000000013459966, w: 0.9673613}
-  m_LocalPosition: {x: 0.03, y: 1.988, z: -0.803}
+  m_LocalPosition: {x: -48.8, y: 1.988, z: -14.535}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5969,7 +5974,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2534013, y: -0.000000048474792, z: 0.000000012698024, w: 0.9673613}
-  m_LocalPosition: {x: 0.03, y: 1.988, z: -0.803}
+  m_LocalPosition: {x: -48.8, y: 1.988, z: -14.535}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7682,6 +7687,7 @@ MonoBehaviour:
   attackRange: 15
   attackCooldown: 1
   weaponHolder: {fileID: 606178107}
+  isPossessed: 0
 --- !u!54 &1334482400
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8257,6 +8263,7 @@ MonoBehaviour:
   attackRange: 15
   attackCooldown: 1
   weaponHolder: {fileID: 663399045}
+  isPossessed: 0
 --- !u!95 &1402876020
 Animator:
   serializedVersion: 7
@@ -8616,6 +8623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggeringTag: Player
+  iso_collider: {fileID: 0}
 --- !u!65 &1547575787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9512,6 +9520,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0101492, y: 1.9999996, z: 5.048143}
   m_Center: {x: -0.005074858, y: 0, z: 1.5240713}
+--- !u!1 &1654218384 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 781679719685557685, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
+  m_PrefabInstance: {fileID: 660848083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1654218388
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654218384}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7425758697607453491, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
 --- !u!1 &1660487472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -466329591000292508, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
@@ -9600,6 +9635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thirdPersonCinemachineCamera: {fileID: 770767498}
   isometricCinemachineCamera: {fileID: 613058323}
+  shooterMoveCam: {fileID: 0}
   katanaEnemyMat: {fileID: 2100000, guid: 2e4912f75f1451d4a9034d4e57b53b8c, type: 2}
   possessableLayer:
     serializedVersion: 2
@@ -9718,6 +9754,7 @@ MonoBehaviour:
   cursorIsLocked: 0
   isSprinting: 0
   isBlocking: 0
+  isAiming: 0
 --- !u!114 &1685777623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54083,6 +54120,7 @@ MonoBehaviour:
   cursorIsLocked: 0
   isSprinting: 0
   isBlocking: 0
+  isAiming: 0
 --- !u!1 &8952622721237712803
 GameObject:
   m_ObjectHideFlags: 0
