@@ -298,6 +298,10 @@ MonoBehaviour:
   brakeStrength: 1
   animationFactor: 5
   isPossessed: 0
+  groundCheckDistance: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 129
 --- !u!54 &20137794
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -306,7 +310,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8394168931425643232}
   serializedVersion: 4
-  m_Mass: 30
+  m_Mass: 1
   m_Drag: 4
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2700,6 +2704,10 @@ MonoBehaviour:
   brakeStrength: 1
   animationFactor: 5
   isPossessed: 0
+  groundCheckDistance: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 129
 --- !u!54 &456200549
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2708,7 +2716,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8394168931032560212}
   serializedVersion: 4
-  m_Mass: 30
+  m_Mass: 1
   m_Drag: 4
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -10133,6 +10141,10 @@ MonoBehaviour:
   brakeStrength: 1
   animationFactor: 5
   isPossessed: 0
+  groundCheckDistance: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 129
 --- !u!54 &1685777624
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10141,7 +10153,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8394168930714741203}
   serializedVersion: 4
-  m_Mass: 30
+  m_Mass: 1
   m_Drag: 4
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -27157,7 +27169,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3694911040137354594}
   serializedVersion: 4
-  m_Mass: 30
+  m_Mass: 1
   m_Drag: 4
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -33667,6 +33679,10 @@ MonoBehaviour:
   brakeStrength: 1
   animationFactor: 5
   isPossessed: 0
+  groundCheckDistance: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 129
 --- !u!4 &4564726924954147432
 Transform:
   m_ObjectHideFlags: 0
@@ -52091,6 +52107,7 @@ GameObject:
   - component: {fileID: 1685777624}
   - component: {fileID: 1685777623}
   - component: {fileID: 1685777622}
+  - component: {fileID: 8696446790520559773}
   m_Layer: 9
   m_Name: fight2 (new) (1)
   m_TagString: Room1
@@ -52115,6 +52132,7 @@ GameObject:
   - component: {fileID: 456200549}
   - component: {fileID: 456200548}
   - component: {fileID: 456200547}
+  - component: {fileID: 8696446789632377628}
   m_Layer: 9
   m_Name: fight2 (new) (2)
   m_TagString: Room1
@@ -52139,6 +52157,7 @@ GameObject:
   - component: {fileID: 20137794}
   - component: {fileID: 20137793}
   - component: {fileID: 20137792}
+  - component: {fileID: 8696446789780364208}
   m_Layer: 9
   m_Name: fight2 (new)
   m_TagString: Room1
@@ -53504,6 +53523,23 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8696446789632377628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394168931032560212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb69794fd471e349b579d61780db75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDuration: 0.2
+  meshRefreshRate: 0.05
+  trailMaterial: {fileID: 2100000, guid: 05d2dc03ba71cef4cb483dfcadf0c8a4, type: 2}
+  destroyDelay: 0.5
+  fadeSpeed: 2
 --- !u!114 &8696446789780364207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53537,6 +53573,23 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8696446789780364208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394168931425643232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb69794fd471e349b579d61780db75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDuration: 0.2
+  meshRefreshRate: 0.05
+  trailMaterial: {fileID: 2100000, guid: 05d2dc03ba71cef4cb483dfcadf0c8a4, type: 2}
+  destroyDelay: 0.5
+  fadeSpeed: 2
 --- !u!114 &8696446790520559772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53570,6 +53623,23 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8696446790520559773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394168930714741203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb69794fd471e349b579d61780db75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDuration: 0.2
+  meshRefreshRate: 0.05
+  trailMaterial: {fileID: 2100000, guid: 05d2dc03ba71cef4cb483dfcadf0c8a4, type: 2}
+  destroyDelay: 0.5
+  fadeSpeed: 2
 --- !u!4 &8697975351219287129
 Transform:
   m_ObjectHideFlags: 0
@@ -54761,9 +54831,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashDuration: 0.2
-  meshRefreshRate: 0.005
+  meshRefreshRate: 0.05
   trailMaterial: {fileID: 2100000, guid: 05d2dc03ba71cef4cb483dfcadf0c8a4, type: 2}
-  destroyDelay: 1
+  destroyDelay: 0.5
   fadeSpeed: 2
 --- !u!1 &8952622721237712803
 GameObject:

@@ -60,6 +60,11 @@ public class EnemyBecomesPlayerController : MonoBehaviour
     
     private IInteractable currentInteractable;
 
+    [Header("Ground Check Settings")]
+    public float groundCheckDistance = 0.2f;
+    public LayerMask groundLayer;
+    private bool isGrounded;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -193,6 +198,8 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         
     private void FixedUpdate()
     {
+        CheckGroundStatus();
+
         if (!isDashing)
         {
             MoveCharacter(gameIsInThirdPerson);
@@ -205,7 +212,6 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         }
         if (InputReader.isEmoting) {
             StartEmoting();
-
         }
         else {
             StopEmoting();
@@ -512,5 +518,17 @@ public class EnemyBecomesPlayerController : MonoBehaviour
                 shieldObject.SetActive(false);
             }
         }
+    }
+
+    private void CheckGroundStatus()
+    {
+        isGrounded = Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, groundCheckDistance + 0.1f, groundLayer);
+        rb.linearDamping = isGrounded ? 4f : 0.1f;
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Draw ground check ray
+        Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * (groundCheckDistance + 0.1f), isGrounded ? Color.green : Color.red);
     }
 }
