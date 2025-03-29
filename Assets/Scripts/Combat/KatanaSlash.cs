@@ -134,20 +134,40 @@ public class KatanaSlash : MonoBehaviour
 
     private void ProcessHit(Collider other)
     {
-        Vector3 hitPoint = other.ClosestPoint(transform.position);
-        Vector3 hitDirection = (hitPoint - transform.position).normalized;
-        hitDirection.y = 0;
-        
-        Health healthComponent = other.GetComponent<Health>();
-        if (healthComponent != null)
+        // Skip if already hit
+        int hitID = other.gameObject.GetInstanceID();
+        if (hitTargets.Contains(hitID)) return;
+
+        // First check if we hit a shield
+        if (other.gameObject.CompareTag("Shield"))
         {
-            healthComponent.TakeDamage(damageAmount, hitPoint, hitDirection);
-            
-            if (debugMode)
+            // Shield hit - block damage and add visual/audio feedback here
+            hitTargets.Add(hitID);
+            // TODO: Add shield hit effects/sound
+            return;
+        }
+
+        // If not blocked, check for health component and apply damage
+        Health targetHealth = other.GetComponent<Health>();
+        if (targetHealth != null)
+        {
+            EnemyBecomesPlayerController playerController = other.GetComponent<EnemyBecomesPlayerController>();
+            if (playerController != null && playerController.isBlocking)
             {
-                Debug.Log($"Hit registered on {other.gameObject.name} for {damageAmount} damage");
-                Debug.DrawLine(transform.position, hitPoint, Color.red, 1f);
+                // Double check if player is blocking in correct direction
+                float dotProduct = Vector3.Dot(playerController.transform.forward, 
+                    (transform.position - playerController.transform.position).normalized);
+                if (dotProduct > 0.5f) // Blocking angle check
+                {
+                    // Successfully blocked
+                    hitTargets.Add(hitID);
+                    return;
+                }
             }
+
+            // Apply damage if not blocked
+            targetHealth.TakeDamage(damageAmount, transform.position, transform.forward);
+            hitTargets.Add(hitID);
         }
     }
 

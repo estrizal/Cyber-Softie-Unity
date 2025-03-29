@@ -11,9 +11,12 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
     public event Action OnInteractPerformed;
     public bool cursorIsLocked = false;
     public bool isSprinting = false;
+    public bool isBlocking = false;
     public Action OnAttackPerformed;
     public Action OnDashPerformed;
     public Action OnInteract2Performed;
+    public event Action OnBlockStarted;
+    public event Action OnBlockCanceled;
 
     void OnEnable() {
         if (controls!=null) {
@@ -95,7 +98,10 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
         controls.Player.SetCallbacks(this);
         controls.Player.Enable();
     }
-
+    void InputSystem.IPlayerActions.OnBlock(InputAction.CallbackContext context)
+    {
+        isBlocking = context.ReadValueAsButton();
+    }
     // Optional: Add these if you need more granular control
     public void DisableInput()
     {
@@ -106,4 +112,5 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
     {
         controls?.Player.Enable();
     }
+    
 }

@@ -25,6 +25,16 @@ public class EnemyBecomesPlayerController : MonoBehaviour
     private bool canDash = true;
     private bool isDashing = false;
 
+    [Header("Shield Settings")]
+    public GameObject shieldObject; // Reference to your existing shield GameObject
+    private bool _isBlocking = false;
+
+    public bool isBlocking
+    {
+        get { return _isBlocking; }
+        private set { _isBlocking = value; }
+    }
+
     private Rigidbody rb; // Reference to the Rigidbody component
     public InputReader InputReader { get; private set; } 
     private Quaternion initialBodyRotation; // Stores the initial rotation of the Body
@@ -56,6 +66,26 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         health = GetComponent<Health>();
         health.onDeath.AddListener(HandleDeath);
         health.onDamaged.AddListener(HandleDamaged);
+        
+        // Initialize shield
+        if (shieldObject != null)
+        {
+            shieldObject.SetActive(false); // Ensure shield starts disabled
+        }
+
+        // Setup shield
+        if (shieldObject != null)
+        {
+            // Make sure shield has collider and proper tag
+            BoxCollider shieldCollider = shieldObject.GetComponent<BoxCollider>();
+            if (shieldCollider == null)
+            {
+                shieldCollider = shieldObject.AddComponent<BoxCollider>();
+            }
+            shieldCollider.isTrigger = true;
+            shieldObject.tag = "Shield";
+            shieldObject.SetActive(false);
+        }
     }
     // Interaction logic using collision triggers
     private void OnTriggerEnter(Collider other)
@@ -158,6 +188,13 @@ public class EnemyBecomesPlayerController : MonoBehaviour
                 moveSpeed = walkSpeed;
             }
         }
+        if (InputReader.isBlocking) {
+            StartBlocking();
+
+        }
+        else {
+            StopBlocking();
+        }
     }
 
     private void MoveCharacter(bool gameIsInThirdPerson)
@@ -229,7 +266,7 @@ public class EnemyBecomesPlayerController : MonoBehaviour
 
     private void HandleAttack()
     {
-        if (!attacking) // Only start attack if not already attacking
+        if (!attacking && !isBlocking) // Only attack if not blocking
         {
             StartCoroutine(StartAttack());
         }
@@ -351,5 +388,28 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         // Start cooldown
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+
+    private void StartBlocking()
+    {
+        if (!attacking && !isDashing)
+        {
+            isBlocking = true;
+            animator.SetBool("isBlocking", true);
+            if (shieldObject != null)
+            {
+                shieldObject.SetActive(true);
+            }
+        }
+    }
+
+    private void StopBlocking()
+    {
+        isBlocking = false;
+        animator.SetBool("isBlocking", false);
+        if (shieldObject != null)
+        {
+            shieldObject.SetActive(false);
+        }
     }
 }

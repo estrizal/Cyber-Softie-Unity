@@ -264,6 +264,7 @@ MonoBehaviour:
   LookComposite: {x: 0, y: 0}
   cursorIsLocked: 0
   isSprinting: 0
+  isBlocking: 0
 --- !u!114 &20137793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +290,7 @@ MonoBehaviour:
   dashForce: 12
   dashDuration: 0.2
   dashCooldown: 1
+  shieldObject: {fileID: 1674801698}
   attackCooldown: 0.7
   brakeStrength: 1
   animationFactor: 5
@@ -2385,6 +2387,7 @@ MonoBehaviour:
   LookComposite: {x: 0, y: 0}
   cursorIsLocked: 0
   isSprinting: 0
+  isBlocking: 0
 --- !u!114 &456200548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2410,6 +2413,7 @@ MonoBehaviour:
   dashForce: 12
   dashDuration: 0.2
   dashCooldown: 1
+  shieldObject: {fileID: 1504080443}
   attackCooldown: 0.7
   brakeStrength: 1
   animationFactor: 5
@@ -2524,6 +2528,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.01, y: 1.09, z: 0.8048899}
   m_Center: {x: 0.07454908, y: 0.06274938, z: 0.1646818}
+--- !u!1 &485903265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 485903266}
+  - component: {fileID: 485903267}
+  m_Layer: 9
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &485903266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485903265}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6277396927325616151}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &485903267
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485903265}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6239166, y: 2.790319, z: 0.2737277}
+  m_Center: {x: 0.02696991, y: 1.2392286, z: 0.5676808}
 --- !u!1 &492441367 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6487356692054705231, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
@@ -6067,6 +6124,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.267319, y: 2.1981325, z: 2.0607338}
   m_Center: {x: -0.02254748, y: 0.017475726, z: 0.030367374}
+--- !u!1 &1017857493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1017857494}
+  - component: {fileID: 1017857495}
+  m_Layer: 9
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1017857494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017857493}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1727536032138465426}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1017857495
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017857493}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6239166, y: 2.790319, z: 0.2737277}
+  m_Center: {x: 0.02696991, y: 1.2392286, z: 0.5676808}
 --- !u!1 &1063018821
 GameObject:
   m_ObjectHideFlags: 0
@@ -8337,6 +8447,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1534b71a1596ace43936940e77a33be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1504080443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1504080444}
+  - component: {fileID: 1504080445}
+  m_Layer: 9
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1504080444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504080443}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6277396928046080912}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1504080445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504080443}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6239166, y: 2.790319, z: 0.2737277}
+  m_Center: {x: 0.02696991, y: 1.2392286, z: 0.5676808}
 --- !u!1 &1522004641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7966731087305637596, guid: 460babe280fe4aa41adc3fefd46f0c0b, type: 3}
@@ -9396,6 +9559,59 @@ MonoBehaviour:
   minIntensity: 0
   maxIntensity: 0.31
   flickerSpeed: 0.2
+--- !u!1 &1674801698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674801699}
+  - component: {fileID: 1674801700}
+  m_Layer: 9
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1674801699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674801698}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6277396927650642724}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1674801700
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674801698}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6239166, y: 2.790319, z: 0.2737277}
+  m_Center: {x: 0.02696991, y: 1.2392286, z: 0.5676808}
 --- !u!114 &1685777622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9412,6 +9628,7 @@ MonoBehaviour:
   LookComposite: {x: 0, y: 0}
   cursorIsLocked: 0
   isSprinting: 0
+  isBlocking: 0
 --- !u!114 &1685777623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9437,6 +9654,7 @@ MonoBehaviour:
   dashForce: 12
   dashDuration: 0.2
   dashCooldown: 1
+  shieldObject: {fileID: 485903265}
   attackCooldown: 0.7
   brakeStrength: 1
   animationFactor: 5
@@ -18993,6 +19211,7 @@ Transform:
   - {fileID: 5562560772830167495}
   - {fileID: 586601968062989843}
   - {fileID: 4123989683144250918}
+  - {fileID: 1017857494}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1727605502095066741
@@ -32664,6 +32883,7 @@ MonoBehaviour:
   dashForce: 12
   dashDuration: 0.2
   dashCooldown: 1
+  shieldObject: {fileID: 1017857493}
   attackCooldown: 0.7
   brakeStrength: 1
   animationFactor: 5
@@ -39890,6 +40110,7 @@ Transform:
   - {fileID: 1592940247090445789}
   - {fileID: 4643893457740167015}
   - {fileID: 2934926757775464167}
+  - {fileID: 485903266}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6277396927650642724
@@ -39909,6 +40130,7 @@ Transform:
   - {fileID: 1592940247587372782}
   - {fileID: 4643893458467910740}
   - {fileID: 2934926758381573588}
+  - {fileID: 1674801699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6277396928046080912
@@ -39928,6 +40150,7 @@ Transform:
   - {fileID: 1592940247978616410}
   - {fileID: 4643893458058308832}
   - {fileID: 2934926757992680800}
+  - {fileID: 1504080444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6280058195217829908
@@ -51137,7 +51360,6 @@ GameObject:
   - component: {fileID: 20137794}
   - component: {fileID: 20137793}
   - component: {fileID: 20137792}
-  - component: {fileID: 8696446789780364208}
   m_Layer: 9
   m_Name: fight2 (new)
   m_TagString: Room1
@@ -52536,27 +52758,6 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
---- !u!65 &8696446789780364208
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8394168931425643232}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.4416069, y: 2.790319, z: 0.2737277}
-  m_Center: {x: -0.01808984, y: 1.2392286, z: 0.5676808}
 --- !u!114 &8696446790520559772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53766,6 +53967,7 @@ MonoBehaviour:
   LookComposite: {x: 0, y: 0}
   cursorIsLocked: 0
   isSprinting: 0
+  isBlocking: 0
 --- !u!1 &8952622721237712803
 GameObject:
   m_ObjectHideFlags: 0

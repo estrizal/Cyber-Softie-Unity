@@ -406,10 +406,10 @@ public class EnemyController : MonoBehaviour
             yield return null;
         }
         // Stop movement for attack
-        EnemyKatanaSlash enemyKatanaSlash = GetComponentInChildren<EnemyKatanaSlash>();
-        if (enemyKatanaSlash != null)
+        KatanaSlash katanaSlash = GetComponentInChildren<KatanaSlash>();
+        if (katanaSlash != null)
         {
-            enemyKatanaSlash.ActivateSlash();
+            katanaSlash.ActivateSlash();
         }
         animator.SetTrigger("Attack");
         // Wait for attack animation to complete
