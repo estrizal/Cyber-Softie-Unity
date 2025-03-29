@@ -54762,9 +54762,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashDuration: 0.2
   meshRefreshRate: 0.1
-  positionToSpawn: {fileID: 1727536032138465426}
   trailMaterial: {fileID: 2100000, guid: c3800011f778bd742955b1355650448e, type: 2}
   destroyDelay: 1
+  fadeSpeed: 2
 --- !u!1 &8952622721237712803
 GameObject:
   m_ObjectHideFlags: 0

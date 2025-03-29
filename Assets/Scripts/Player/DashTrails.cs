@@ -3,72 +3,104 @@ using UnityEngine;
 
 public class DashTrails : MonoBehaviour
 {
-    private InputReader inputReader;
+    [Header("Trail Settings")]
     public float dashDuration = 0.2f;
-    public float meshRefreshRate = 0.1f; // Time between mesh refreshes in seconds
-    private bool isTrailActive;
-    public Transform positionToSpawn;
-    private SkinnedMeshRenderer[] skinnedMeshRenderers;
-    public Material trailMaterial; // Add this material reference
-    public float destroyDelay = 1f; // How long trails last
+    public float meshRefreshRate = 0.02f; // Increased refresh rate for smoother trails
+    public Material trailMaterial;
+    public float destroyDelay = 0.5f;
+    public float fadeSpeed = 2f;
 
-    void Start()
+    private InputReader inputReader;
+    private SkinnedMeshRenderer[] skinnedMeshRenderers;
+    private bool isTrailActive;
+
+    void Awake()
     {
-        inputReader = GetComponent<InputReader>();
+        // Get components in Awake instead of Start
+        inputReader = GetComponentInParent<InputReader>();
         skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+
+        if (inputReader == null)
+        {
+            Debug.LogError("No InputReader found on parent object!", this);
+        }
+
+        if (skinnedMeshRenderers.Length == 0)
+        {
+            Debug.LogError("No SkinnedMeshRenderers found in children!", this);
+        }
     }
 
     void OnEnable()
     {
-        inputReader.OnDashPerformed += HandleDashPerformed;
+        if (inputReader != null)
+        {
+            inputReader.OnDashPerformed += HandleDashPerformed;
+        }
     }
 
     void OnDisable()
     {
-        inputReader.OnDashPerformed -= HandleDashPerformed;
+        if (inputReader != null)
+        {
+            inputReader.OnDashPerformed -= HandleDashPerformed;
+        }
     }
 
     void HandleDashPerformed()
     {
-        if (!isTrailActive)
-        {
-            isTrailActive = true;
-            StartCoroutine(ActivateDashTrail());
-        }
+        StartCoroutine(ActivateDashTrail());
     }
 
     IEnumerator ActivateDashTrail()
     {
-        float elapsedTime = 0f;
+        float startTime = Time.time;
 
-        while (elapsedTime < dashDuration)
+        while (Time.time < startTime + dashDuration)
         {
-            // Create trail meshes
-            foreach (SkinnedMeshRenderer smr in skinnedMeshRenderers)
-            {
-                GameObject trailObject = new GameObject("Trail");
-                trailObject.transform.SetPositionAndRotation(transform.position, transform.rotation);
-                
-                // Add components
-                MeshRenderer meshRenderer = trailObject.AddComponent<MeshRenderer>();
-                MeshFilter meshFilter = trailObject.AddComponent<MeshFilter>();
-                
-                // Create and bake mesh
-                Mesh mesh = new Mesh();
-                smr.BakeMesh(mesh);
-                meshFilter.mesh = mesh;
-                
-                // Set material
-                meshRenderer.material = trailMaterial;
-                
-                // Destroy after delay
-                Destroy(trailObject, destroyDelay);
-            }
-
-            elapsedTime += meshRefreshRate;
+            CreateTrailObjects();
             yield return new WaitForSeconds(meshRefreshRate);
         }
+    }
 
-        isTrailActive = false;
+    void CreateTrailObjects()
+    {
+        foreach (SkinnedMeshRenderer smr in skinnedMeshRenderers)
+        {
+            // Create trail object
+            GameObject trailObject = new GameObject($"Trail_{smr.name}");
+            trailObject.transform.SetPositionAndRotation(smr.transform.position, smr.transform.rotation);
+            
+            // Add mesh components
+            MeshFilter meshFilter = trailObject.AddComponent<MeshFilter>();
+            MeshRenderer meshRenderer = trailObject.AddComponent<MeshRenderer>();
+            
+            // Bake and assign mesh
+            Mesh mesh = new Mesh();
+            smr.BakeMesh(mesh);
+            meshFilter.mesh = mesh;
+            
+            // Setup material
+            Material trailMaterialInstance = new Material(trailMaterial);
+            meshRenderer.material = trailMaterialInstance;
+
+            // Add fade out component
+            StartCoroutine(FadeOutTrail(trailObject, trailMaterialInstance));
+        }
+    }
+
+    IEnumerator FadeOutTrail(GameObject trailObject, Material material)
+    {
+        Color color = material.color;
+        float alpha = color.a;
+
+        while (alpha > 0)
+        {
+            alpha -= Time.deltaTime * fadeSpeed;
+            material.color = new Color(color.r, color.g, color.b, alpha);
+            yield return null;
+        }
+
+        Destroy(trailObject);
     }
 }
