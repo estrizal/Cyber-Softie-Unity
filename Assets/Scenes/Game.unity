@@ -54761,8 +54761,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashDuration: 0.2
-  meshRefreshRate: 0.1
-  trailMaterial: {fileID: 2100000, guid: c3800011f778bd742955b1355650448e, type: 2}
+  meshRefreshRate: 0.005
+  trailMaterial: {fileID: 2100000, guid: 05d2dc03ba71cef4cb483dfcadf0c8a4, type: 2}
   destroyDelay: 1
   fadeSpeed: 2
 --- !u!1 &8952622721237712803
