@@ -27,12 +27,22 @@ public class EnemyBecomesPlayerController : MonoBehaviour
 
     [Header("Shield Settings")]
     public GameObject shieldObject; // Reference to your existing shield GameObject
-    private bool _isBlocking = false;
+    public bool isBlocking = false;
+    
+    [Header("Combat Settings")]
+    public float attackCooldown = 0.9f;
+    public float comboWindow = 0.4f;  // Reduced window for tighter combos
+    private float lastAttackTime;
+    private bool canCombo = false;
+    private int comboCount = 0;
+    private float comboTimer = 0f;
 
-    public bool isBlocking
+    private bool _isEmoting = false;
+
+    public bool isEmoting
     {
-        get { return _isBlocking; }
-        private set { _isBlocking = value; }
+        get { return _isEmoting; }
+        private set { _isEmoting = value; }
     }
 
     private Rigidbody rb; // Reference to the Rigidbody component
@@ -40,7 +50,6 @@ public class EnemyBecomesPlayerController : MonoBehaviour
     private Quaternion initialBodyRotation; // Stores the initial rotation of the Body
     private Animator animator;
     private bool attacking = false;
-    public float attackCooldown = 0.9f;
     
     public float brakeStrength = 1f; // Strength of braking force
     private bool isMoving = false;
@@ -122,6 +131,8 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         {
             InputReader.OnAttackPerformed += HandleAttack;
         }
+        InputReader.OnBlockStarted += StartBlocking;
+        InputReader.OnBlockFinished += StopBlocking;
     }
 
     private void OnDisable()
@@ -131,6 +142,8 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         {
             InputReader.OnAttackPerformed -= HandleAttack;
         }
+        InputReader.OnBlockStarted -= StartBlocking;
+        InputReader.OnBlockFinished -= StopBlocking;
     }
 
     private void Start()
@@ -174,6 +187,8 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         {
             animator.SetFloat("Speed", rb.linearVelocity.magnitude/moveSpeed*animationFactor);
         }
+        
+        UpdateComboTimer();
     }
         
     private void FixedUpdate()
@@ -188,12 +203,12 @@ public class EnemyBecomesPlayerController : MonoBehaviour
                 moveSpeed = walkSpeed;
             }
         }
-        if (InputReader.isBlocking) {
-            StartBlocking();
+        if (InputReader.isEmoting) {
+            StartEmoting();
 
         }
         else {
-            StopBlocking();
+            StopEmoting();
         }
     }
 
@@ -266,21 +281,50 @@ public class EnemyBecomesPlayerController : MonoBehaviour
 
     private void HandleAttack()
     {
-        if (!attacking && !isBlocking) // Only attack if not blocking
+        // Allow attack if not in other states
+        if (!isEmoting && !isBlocking && !isDashing)
         {
-            StartCoroutine(StartAttack());
+            float timeSinceLastAttack = Time.time - lastAttackTime;
+
+            // Start new combo or continue existing one
+            if (!attacking || (canCombo && timeSinceLastAttack <= comboWindow))
+            {
+                if (canCombo && timeSinceLastAttack <= comboWindow)
+                {
+                    comboCount++;
+                    if (comboCount > 3) comboCount = 1;
+                }
+                else
+                {
+                    comboCount = 1;
+                }
+                StartCoroutine(StartAttack());
+            }
         }
     }
 
     IEnumerator StartAttack()
     {
         attacking = true;
+        lastAttackTime = Time.time;
+        
+        // Apply braking force during attack
         ApplyBrakes(brakeStrength * 70);
         
-        // Play attack animation
-        
-        animator.SetTrigger("Attack");
-        
+        // Trigger appropriate attack animation
+        switch (comboCount)
+        {
+            case 1:
+                animator.SetTrigger("Attack");
+                break;
+            case 2:
+                animator.SetTrigger("Attack2");
+                break;
+            case 3:
+                animator.SetTrigger("Attack3");
+                break;
+        }
+
         // Get katana slash component
         KatanaSlash katanaSlash = GetComponentInChildren<KatanaSlash>();
         if (katanaSlash != null)
@@ -288,10 +332,41 @@ public class EnemyBecomesPlayerController : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             katanaSlash.ActivateSlash();
         }
-        
-        // Wait for attack animation to complete
-        yield return new WaitForSeconds(attackCooldown);
+
+        // Enable combo window earlier in the animation
+        yield return new WaitForSeconds(attackCooldown * 0.5f);
+        canCombo = true;
+        comboTimer = comboWindow;
+
+        // Complete the attack
+        yield return new WaitForSeconds(attackCooldown * 0.5f);
         attacking = false;
+
+        // Reset if no follow-up
+        if (comboTimer <= 0)
+        {
+            ResetCombo();
+        }
+    }
+
+    private void ResetCombo()
+    {
+        animator.SetTrigger("returnFromAttack");
+        comboCount = 0;
+        canCombo = false;
+        comboTimer = 0f;
+    }
+
+    private void UpdateComboTimer()
+    {
+        if (comboTimer > 0)
+        {
+            comboTimer -= Time.deltaTime;
+            if (comboTimer <= 0)
+            {
+                ResetCombo();
+            }
+        }
     }
 
     private void HandleDeath()
@@ -328,7 +403,7 @@ public class EnemyBecomesPlayerController : MonoBehaviour
 
     private void OnDash()
     {
-        if (canDash && !isDashing)
+        if (canDash && !isDashing && !isBlocking)
         {
             if (attacking)
             {
@@ -390,12 +465,35 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         canDash = true;
     }
 
+    private void StartEmoting()
+    {
+        if (!attacking && !isDashing && !isBlocking)
+        {
+            isEmoting = true;
+            animator.SetBool("isEmoting", true);
+            if (shieldObject != null)
+            {
+                shieldObject.SetActive(true);
+            }
+        }
+    }
+
+    private void StopEmoting()
+    {
+        isEmoting = false;
+        animator.SetBool("isEmoting", false);
+        if (shieldObject != null)
+        {
+            shieldObject.SetActive(false);
+        }
+    }
+
     private void StartBlocking()
     {
-        if (!attacking && !isDashing)
+        if (!attacking && !isDashing && !isEmoting)
         {
             isBlocking = true;
-            animator.SetBool("isBlocking", true);
+            animator.SetTrigger("BlockStart");
             if (shieldObject != null)
             {
                 shieldObject.SetActive(true);
@@ -405,11 +503,14 @@ public class EnemyBecomesPlayerController : MonoBehaviour
 
     private void StopBlocking()
     {
-        isBlocking = false;
-        animator.SetBool("isBlocking", false);
-        if (shieldObject != null)
+        if (isBlocking)
         {
-            shieldObject.SetActive(false);
+            isBlocking = false;
+            animator.SetTrigger("BlockEnd");
+            if (shieldObject != null)
+            {
+                shieldObject.SetActive(false);
+            }
         }
     }
 }

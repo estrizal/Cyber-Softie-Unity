@@ -264,8 +264,8 @@ MonoBehaviour:
   LookComposite: {x: 0, y: 0}
   cursorIsLocked: 0
   isSprinting: 0
-  isBlocking: 0
   isAiming: 0
+  isEmoting: 0
 --- !u!114 &20137793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,11 +288,13 @@ MonoBehaviour:
   gameIsInThirdPerson: 0
   basePriority: 10
   activePriority: 11
-  dashForce: 12
+  dashForce: 17
   dashDuration: 0.2
   dashCooldown: 1
   shieldObject: {fileID: 1674801698}
+  isBlocking: 0
   attackCooldown: 0.7
+  comboWindow: 1
   brakeStrength: 1
   animationFactor: 5
   isPossessed: 0
@@ -304,7 +306,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8394168931425643232}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 30
   m_Drag: 4
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1261,7 +1263,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1316581923}
-  - {fileID: 1448408359}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2665,8 +2666,8 @@ MonoBehaviour:
   LookComposite: {x: 0, y: 0}
   cursorIsLocked: 0
   isSprinting: 0
-  isBlocking: 0
   isAiming: 0
+  isEmoting: 0
 --- !u!114 &456200548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2689,11 +2690,13 @@ MonoBehaviour:
   gameIsInThirdPerson: 0
   basePriority: 10
   activePriority: 11
-  dashForce: 12
+  dashForce: 17
   dashDuration: 0.2
   dashCooldown: 1
   shieldObject: {fileID: 1504080443}
+  isBlocking: 0
   attackCooldown: 0.7
+  comboWindow: 1
   brakeStrength: 1
   animationFactor: 5
   isPossessed: 0
@@ -2705,7 +2708,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8394168931032560212}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 30
   m_Drag: 4
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -8097,8 +8100,8 @@ MonoBehaviour:
   LookComposite: {x: 0, y: 0}
   cursorIsLocked: 0
   isSprinting: 0
-  isBlocking: 0
   isAiming: 0
+  isEmoting: 0
 --- !u!1 &1340811133 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2846370903787147712, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
@@ -8676,78 +8679,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.267319, y: 2.198133, z: 2.0607343}
   m_Center: {x: -0.022556065, y: 0.017474297, z: 0.030366905}
---- !u!1 &1448408358
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1448408359}
-  - component: {fileID: 1448408361}
-  - component: {fileID: 1448408360}
-  m_Layer: 5
-  m_Name: Crosshair
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1448408359
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448408358}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 201110555}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 0}
-  m_SizeDelta: {x: 20, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1448408360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448408358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &1448408361
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448408358}
-  m_CullTransparentMesh: 1
 --- !u!1 &1457861001 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 401122468259050895, guid: 41d74a19ba80d434c8fae27a0463ed85, type: 3}
@@ -9022,8 +8953,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8928a420707d1b64faebb4096797fea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggeringTag: Player
-  iso_collider: {fileID: 0}
 --- !u!65 &1547575787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10126,8 +10055,8 @@ MonoBehaviour:
   LookComposite: {x: 0, y: 0}
   cursorIsLocked: 0
   isSprinting: 0
-  isBlocking: 0
   isAiming: 0
+  isEmoting: 0
 --- !u!114 &1685777623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10150,11 +10079,13 @@ MonoBehaviour:
   gameIsInThirdPerson: 0
   basePriority: 10
   activePriority: 11
-  dashForce: 12
+  dashForce: 17
   dashDuration: 0.2
   dashCooldown: 1
   shieldObject: {fileID: 485903265}
+  isBlocking: 0
   attackCooldown: 0.7
+  comboWindow: 1
   brakeStrength: 1
   animationFactor: 5
   isPossessed: 0
@@ -10166,7 +10097,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8394168930714741203}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 30
   m_Drag: 4
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -27182,7 +27113,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3694911040137354594}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 30
   m_Drag: 4
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -33681,11 +33612,13 @@ MonoBehaviour:
   gameIsInThirdPerson: 0
   basePriority: 10
   activePriority: 11
-  dashForce: 12
+  dashForce: 17
   dashDuration: 0.2
   dashCooldown: 1
   shieldObject: {fileID: 1017857493}
+  isBlocking: 0
   attackCooldown: 0.7
+  comboWindow: 1
   brakeStrength: 1
   animationFactor: 5
   isPossessed: 0
@@ -41596,7 +41529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3af456f9875b3041a5f4166a342aeef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 30
   currentHealth: 0
   isStaticEnemy: 0
   knockbackForce: 5
@@ -54768,8 +54701,8 @@ MonoBehaviour:
   LookComposite: {x: 0, y: 0}
   cursorIsLocked: 0
   isSprinting: 0
-  isBlocking: 0
   isAiming: 0
+  isEmoting: 0
 --- !u!1 &8952622721237712803
 GameObject:
   m_ObjectHideFlags: 0

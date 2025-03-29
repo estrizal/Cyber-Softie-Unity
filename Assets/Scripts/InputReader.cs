@@ -11,11 +11,13 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
     public event Action OnInteractPerformed;
     public bool cursorIsLocked = false;
     public bool isSprinting = false;
-    public bool isBlocking = false;
     public Action OnAttackPerformed;
     public Action OnDashPerformed;
     public Action OnInteract2Performed;
+    public Action OnBlockStarted;
+    public Action OnBlockFinished;
     public bool isAiming = false;
+    public bool isEmoting = false;
 
     void OnEnable() {
         if (controls!=null) {
@@ -54,7 +56,7 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
         if (!context.performed) return; // Trigger only once per press
         OnDashPerformed?.Invoke();
     }
-
+    
 
     void InputSystem.IPlayerActions.OnInteract(InputAction.CallbackContext context)
     {
@@ -97,9 +99,18 @@ public class InputReader : MonoBehaviour, InputSystem.IPlayerActions
         controls.Player.SetCallbacks(this);
         controls.Player.Enable();
     }
+    void InputSystem.IPlayerActions.OnEmote(InputAction.CallbackContext context)
+    {
+        isEmoting = context.ReadValueAsButton();
+    }
     void InputSystem.IPlayerActions.OnBlock(InputAction.CallbackContext context)
     {
-        isBlocking = context.ReadValueAsButton();
+        if (context.performed) {
+
+            OnBlockStarted?.Invoke();
+        } else if (context.canceled) {
+            OnBlockFinished?.Invoke();
+        }
     }
     void InputSystem.IPlayerActions.OnAim(InputAction.CallbackContext context)
     {
