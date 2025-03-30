@@ -9,6 +9,8 @@ public class Gate2 : MonoBehaviour
     private Vector3 targetPosition;
     private bool shouldOpen = false;
     public AudioSource Gate_open_audio;
+    public AudioSource last_stage;
+
 
     void Start()
     {
@@ -47,6 +49,7 @@ public class Gate2 : MonoBehaviour
         if (Gate_open_audio != null)
         {
             Gate_open_audio.Play();
+            last_stage.Play();
         }
         gameManager.playerRoomNumber = 2;
         // Optionally add sound or animation trigger here
