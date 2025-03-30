@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class Health : MonoBehaviour
     public UnityEvent onDeath;
     public UnityEvent<float> onHealthChanged;
     public UnityEvent onDamaged;
+    [Header("UI")]
+    public Slider healthSlider;
 
     private void Awake()
     {
@@ -44,6 +47,12 @@ public class Health : MonoBehaviour
         {
             originalMaterials[i] = meshRenderers[i].material;
         }
+        // Initialize slider
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
     }
 
     public void TakeDamage(float damage, Vector3 hitPoint, Vector3 hitDirection)
@@ -51,7 +60,10 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0 || damage <= 0) return;
 
         hitDirection = hitDirection.normalized;
-        
+        if (healthSlider != null)
+        {
+            healthSlider.value = currentHealth;
+        }
         currentHealth = Mathf.Max(0, currentHealth - damage);
         onHealthChanged?.Invoke(currentHealth / maxHealth);
         onDamaged?.Invoke();

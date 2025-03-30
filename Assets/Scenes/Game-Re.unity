@@ -8630,6 +8630,7 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+  healthSlider: {fileID: 0}
 --- !u!136 &1334482402
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9194,6 +9195,7 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+  healthSlider: {fileID: 0}
 --- !u!54 &1402876018
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -44970,6 +44972,7 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+  healthSlider: {fileID: 0}
 --- !u!114 &8696446789780364207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45003,6 +45006,7 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+  healthSlider: {fileID: 0}
 --- !u!114 &8696446790520559772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45036,6 +45040,7 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+  healthSlider: {fileID: 0}
 --- !u!1 &8698088076082822850
 GameObject:
   m_ObjectHideFlags: 0
