@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -140,6 +141,7 @@ public class Health : MonoBehaviour
         {
             // Player death
             gameObject.SetActive(false);
+            SceneManager.LoadScene("Death Screen");
         }
         else
         {
