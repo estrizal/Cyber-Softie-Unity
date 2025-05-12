@@ -98,7 +98,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0.27718166
-  m_ExitTime: 0.58987457
+  m_ExitTime: 0.7
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -397,9 +397,9 @@ BlendTree:
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 3044808342055064166, guid: 11fa0f4972842364b8bda850951d3c0e, type: 3}
-    m_Threshold: 0.096692085
+    m_Threshold: 0
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 0.5
+    m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
     m_Mirror: 0
@@ -413,7 +413,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 8906397857372169535, guid: 11fa0f4972842364b8bda850951d3c0e, type: 3}
-    m_Threshold: 1
+    m_Threshold: 1.2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 0.65
     m_CycleOffset: 0
@@ -421,8 +421,8 @@ BlendTree:
     m_Mirror: 0
   m_BlendParameter: Speed
   m_BlendParameterY: Blend
-  m_MinThreshold: 0.096692085
-  m_MaxThreshold: 1
+  m_MinThreshold: 0
+  m_MaxThreshold: 1.2
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -672,9 +672,9 @@ BlendTree:
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 3044808342055064166, guid: 11fa0f4972842364b8bda850951d3c0e, type: 3}
-    m_Threshold: 0.096692085
+    m_Threshold: 0
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 0.5
+    m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
     m_Mirror: 0
@@ -688,7 +688,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 8906397857372169535, guid: 11fa0f4972842364b8bda850951d3c0e, type: 3}
-    m_Threshold: 1
+    m_Threshold: 1.2
     m_Position: {x: 0, y: 0}
     m_TimeScale: 0.65
     m_CycleOffset: 0
@@ -696,8 +696,8 @@ BlendTree:
     m_Mirror: 0
   m_BlendParameter: Speed
   m_BlendParameterY: Blend
-  m_MinThreshold: 0.096692085
-  m_MaxThreshold: 1
+  m_MinThreshold: 0
+  m_MaxThreshold: 1.2
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -825,7 +825,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.5833334
+  m_ExitTime: 0.7
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

@@ -149,15 +149,20 @@ public class Health : MonoBehaviour
     {
         onDeath?.Invoke();
         
-        if (GetComponent<EnemyBecomesPlayerController>() != null)
+        // Check if this is the currently possessed entity
+        EnemyBecomesPlayerController playerController = GetComponent<EnemyBecomesPlayerController>();
+        ShooterEnemyBecomesPlayerController shooterController = GetComponent<ShooterEnemyBecomesPlayerController>();
+        
+        if ((playerController != null && playerController.isPossessed) || 
+            (shooterController != null && shooterController.isPossessed))
         {
-            // Player death
+            // Player death - only if this entity is currently possessed
             gameObject.SetActive(false);
             SceneManager.LoadScene("Death Screen");
         }
         else
         {
-            // Enemy death
+            // Regular enemy death
             Destroy(gameObject, 0.5f);
         }
     }

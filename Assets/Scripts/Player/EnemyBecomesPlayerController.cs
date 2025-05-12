@@ -17,11 +17,15 @@ public class EnemyBecomesPlayerController : MonoBehaviour
     public bool gameIsInThirdPerson;
     [SerializeField] private int basePriority = 10;
     [SerializeField] private int activePriority = 11;
-    
+    [Header("Stair Movement Settings")]
+    private float stepHeight = 0.4f; // Adjust as needed
+    private float rayDistance = 0.6f; // Adjust as needed
+
+
     [Header("Dash Settings")]
     public float dashForce = 20f;
     public float dashDuration = 0.2f;
-    public float dashCooldown = 1f;
+    public float dashCooldown = 0.3f;
     private bool canDash = true;
     private bool isDashing = false;
 
@@ -53,6 +57,7 @@ public class EnemyBecomesPlayerController : MonoBehaviour
     
     public float brakeStrength = 1f; // Strength of braking force
     private bool isMoving = false;
+    private bool isMovingOnStairs = false;
     public float animationFactor = 1.2f;
     private GameManager gameManager;
     private Health health;
@@ -188,7 +193,7 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         isMoving = rb.linearVelocity.magnitude > 0.0005f;
         animator.SetBool("isMoving", isMoving);
         
-        if (isMoving)
+        if (isMoving && !isMovingOnStairs)
         {
             animator.SetFloat("Speed", rb.linearVelocity.magnitude/moveSpeed*animationFactor);
         }
@@ -222,6 +227,7 @@ public class EnemyBecomesPlayerController : MonoBehaviour
     {
         if (gameIsInThirdPerson)
         {
+            isMovingOnStairs = false; // Reset stair movement flag
             if (InputReader.MoveComposite == Vector2.zero)
             {
                 ApplyBrakes(brakeStrength); // Stop movement if no input
@@ -249,6 +255,35 @@ public class EnemyBecomesPlayerController : MonoBehaviour
                 Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
                 rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 10f); // Smooth rotation
             }
+            // Only attempt step up if moving
+            if (InputReader.MoveComposite != Vector2.zero)
+            {
+                Vector3 origin = transform.position + Vector3.up * 0.05f;
+                Vector3 forward = transform.forward;
+
+                // Lower raycast
+                if (Physics.Raycast(origin, forward, out RaycastHit lowerHit, rayDistance, groundLayer))
+                {
+                    // Upper raycast
+                    Vector3 upperOrigin = origin + Vector3.up * stepHeight;
+                    if (!Physics.Raycast(upperOrigin, forward, rayDistance, groundLayer))
+                    {
+                        isMovingOnStairs = true;
+                        // Calculate the height difference to the step
+                        float stepUpAmount = lowerHit.point.y - transform.position.y;
+                        if (stepUpAmount > 0.01f && stepUpAmount < stepHeight + 0.05f)
+                        {
+                            // Smoothly move up to the step using MovePosition
+                            Vector3 stepTarget = new Vector3(rb.position.x, lowerHit.point.y, rb.position.z);
+                            rb.MovePosition(Vector3.Lerp(rb.position, stepTarget, 5f)); // 0.2f is smoothing factor, adjust as needed
+                            animator.SetFloat("Speed", 0.5f); // Adjust animation speed for step up
+                        }
+                    }
+                }
+            }
+            
+
+
         }
         else // Isometric mode
         {
@@ -284,7 +319,7 @@ public class EnemyBecomesPlayerController : MonoBehaviour
         Vector3 horizontalVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
         rb.AddForce(-horizontalVelocity * brakeStrength, ForceMode.Acceleration);
     }
-
+    
     private void HandleAttack()
     {
         // Allow attack if not in other states
@@ -523,7 +558,7 @@ public class EnemyBecomesPlayerController : MonoBehaviour
     private void CheckGroundStatus()
     {
         isGrounded = Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, groundCheckDistance + 0.1f, groundLayer);
-        rb.linearDamping = isGrounded ? 4f : 0.1f;
+       
     }
 
     private void OnDrawGizmos()
