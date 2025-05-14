@@ -43,6 +43,7 @@ public class Gate2 : MonoBehaviour
 
     public void OpenGate()
     {
+        
         shouldOpen = true;
         Debug.Log("Gate is opening...");
 
