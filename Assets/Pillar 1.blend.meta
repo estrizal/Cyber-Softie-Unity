@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5bf17d30c2d924c439719c1d8ebcac28
+guid: 05f5af4349be6d84aa60d07b82cfb9ad
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,38 +7,33 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Eyes
-    second: {fileID: 2100000, guid: a6ae9509815d85d4c9ae74ae274350be, type: 2}
+      name: Designing
+    second: {fileID: 2100000, guid: 74edd82c6257d7542a8c1e43c60fcc0a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Ghost White
-    second: {fileID: 2100000, guid: 900028bc24ac687479673d4ca70b984d, type: 2}
+      name: Material.001
+    second: {fileID: 2100000, guid: c7c133265b96c2d4c80feb4018a23bce, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Hat Black
-    second: {fileID: 2100000, guid: c7703b33543b1fb45869326917a9a0be, type: 2}
+      name: Organic Noise
+    second: {fileID: 2100000, guid: 8e9efab337bcc3948a2333c36549607f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: b4b1a38c60126b14c964a477d8ceb470, type: 2}
+      name: Paper Texture
+    second: {fileID: 2100000, guid: 9a0ee28518ac6bc48b97af7a59d0c322, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Orangeish
-    second: {fileID: 2100000, guid: d26660a281a4739468b5ca5e9351ba6d, type: 2}
+      name: White Glow
+    second: {fileID: 2100000, guid: 5b67d499915e5d240bcfa037d846a4c9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Orangeish.001
-    second: {fileID: 2100000, guid: d91b8872d4589644f98f58894ef7ad1e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Silver
-    second: {fileID: 2100000, guid: e04db05f0b5fa964f8541a568442b0ad, type: 2}
+      name: bLACK
+    second: {fileID: 2100000, guid: cb8985f490d10854f9dc3b9e71b9a066, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
